@@ -1,38 +1,28 @@
-.App {
-  text-align: center;
+* {
+  box-sizing: border-box;
+  padding: 0;
+  margin: 0;
 }
 
-.App-logo {
-  height: 40vmin;
-  pointer-events: none;
+:root {
+  --font-family-head: 'Cormorant Garamond', serif;
+  --font-family-p: 'Fira Sans', sans-serif;
+  --font-color-p: #f7f7f7;
+  --font-color-p-dark: rgb(49, 49, 49);
+  --color-main-1: #D45966;
+  --color-main-2: #993159;
+  --color-main-3: #0D051C;
+  --color-main-4: #5F203A;
+  --color-light-1: #F8D45C;
+  --color-light-2: #AC9C38;
+  --color-light-3: #6F5420;
 }
 
-@media (prefers-reduced-motion: no-preference) {
-  .App-logo {
-    animation: App-logo-spin infinite 20s linear;
-  }
+main {
+  background-image: url('./media//skyline_bg.jpg');
+  background-size: 250% 250%;
+  background-position: 20% 0%;
+  height: 100vh;
+  width: 100vw;
 }
 
-.App-header {
-  background-color: #282c34;
-  min-height: 100vh;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  font-size: calc(10px + 2vmin);
-  color: white;
-}
-
-.App-link {
-  color: #61dafb;
-}
-
-@keyframes App-logo-spin {
-  from {
-    transform: rotate(0deg);
-  }
-  to {
-    transform: rotate(360deg);
-  }
-}
