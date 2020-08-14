@@ -11,7 +11,8 @@ export class DRContextProvider extends React.Component {
     constructor(props) {
         super(props);
         this.state = {
-
+            login: false,
+            intro: true,
         }
         
         const jwtPayload = TokenService.parseAuthToken()
@@ -25,9 +26,23 @@ export class DRContextProvider extends React.Component {
         }
     }
 
+    toggleLanding = () => {
+        this.setState({
+            login: !this.state.login
+        })
+    }
+
+    toggleIntro = (bool) => {
+        this.setState({
+            intro: bool
+        })
+    }
+
     render() {
         const value = {
-            ...this.state
+            ...this.state,
+            toggleLanding: this.toggleLanding,
+            toggleIntro: this.toggleIntro
         }
 
         return (

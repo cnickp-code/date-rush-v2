@@ -7,7 +7,8 @@
 :root {
   --font-family-head: 'Cormorant Garamond', serif;
   --font-family-p: 'Fira Sans', sans-serif;
-  --font-color-p: #f7f7f7;
+  --font-color-p: #ffe6ff;
+  --font-color-p2: #ff65bd;
   --font-color-p-dark: rgb(49, 49, 49);
   --color-main-1: #D45966;
   --color-main-2: #993159;
@@ -18,11 +19,390 @@
   --color-light-3: #6F5420;
 }
 
-main {
+html {
+  font-family: var(--font-family-p);
+}
+
+body {
   background-image: url('./media//skyline_bg.jpg');
   background-size: 250% 250%;
-  background-position: 20% 0%;
+  background-position: 90% 85%;
   height: 100vh;
   width: 100vw;
+  transition: 2s ease;
+}
+
+.body-pos-home {
+  background-position: 20% 85%;
+}
+
+main {
+  position: relative;
+  /* background-color: rgba(0, 0, 0, 0.5); */
+}
+
+nav {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
+  padding: 10px;
+  position: fixed;
+  /* background-color: rgba(161, 111, 167, 0.8); */
+  height: 40px;
+  width: 100vw;
+  /* Permalink - use to edit and share this gradient: https://colorzilla.com/gradient-editor/#ae5f8c+0,782b6c+30,38173c+71,0d051c+100 */
+  background: #ae5f8c; /* Old browsers */
+  background: -moz-linear-gradient(left,  rgba(174, 95, 140, 0.8) 0%, rgba(120, 43, 108, 0.8) 30%, rgba(56, 23, 60, 0.8) 71%, rgba(13, 5, 28, 0.8) 100%); /* FF3.6-15 */
+  background: -webkit-linear-gradient(left,  rgba(174, 95, 140, 0.8) 0%,rgba(120, 43, 108, 0.8) 30%,rgba(56, 23, 60, 0.8) 71%,rgba(13, 5, 28, 0.8) 100%); /* Chrome10-25,Safari5.1-6 */
+  background: linear-gradient(to right,  rgba(174, 95, 140, 0.8) 0%,rgba(120, 43, 108, 0.8) 30%,rgba(56, 23, 60, 0.8) 71%,rgba(13, 5, 28, 0.8) 100%); /* W3C, IE10+, FF16+, Chrome26+, Opera12+, Safari7+ */
+  filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#ae5f8c', endColorstr='#0d051c',GradientType=1 ); /* IE6-9 */
+  -webkit-box-shadow: 0px 3px 5px 0px rgba(0,0,0,0.75);
+  -moz-box-shadow: 0px 3px 5px 0px rgba(0,0,0,0.75);
+  box-shadow: 0px 3px 5px 0px rgba(0,0,0,0.75);
+}
+
+.left-nav-container {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+}
+
+.logo-img {
+  height: 30px;
+  width: auto;
+}
+
+.logo-text {
+  font-size: 24px;
+  font-family: var(--font-family-head);
+  color: var(--color-main-1);
+  /* text-shadow: 0 0 0.6rem #ffe6ff, 0 0 1.5rem #ff65bd,
+  -0.2rem 0.1rem 1rem #ff65bd, 0.2rem 0.1rem 1rem #ff65bd,
+  0 -0.5rem 2rem #ff2483, 0 0.5rem 3rem #ff2483;
+  animation: shine 2s forwards, flicker 3s infinite; */
+}
+
+/* GLOBAL STYLES */
+
+.mt-5 {
+  margin-top: 5px;
+}
+
+.mt-10 {
+  margin-top: 10px;
+}
+
+.mt-20 {
+  margin-top: 20px;
+}
+
+.mb-5 {
+  margin-bottom: 5px;
+}
+
+.mb-10 {
+  margin-bottom: 10px;
+}
+
+.mb-20 {
+  margin-bottom: 20px;
+}
+
+.pad-5 {
+  padding: 5px;
+}
+
+.pad-10 {
+  padding: 10px;
+}
+
+.fs-xs {
+  font-size: x-small;
+}
+
+.fs-xl {
+  font-size: x-large;
+}
+
+.text-center {
+  text-align: center;
+}
+
+.text-justify {
+  text-align: justify;
+}
+
+.center {
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.text-right {
+  text-align: right;
+}
+
+.error {
+
+}
+
+.item-btn {
+  background-color: #ff65bd;
+  color: var(--font-color-p);
+  padding: 5px 10px;
+  border: 2px solid var(--font-color-p);
+  cursor: pointer;
+  border-radius: 5px;
+  text-shadow: 0 0 0.6rem #ffe6ff, 0 0 1.5rem #ff65bd,
+  -0.2rem 0.1rem 1rem #ff65bd, 0.2rem 0.1rem 1rem #ff65bd;
+}
+
+.item-btn:hover {
+  animation: shine-btn 1s forwards;
+}
+
+/* LOGIN/SIGNUP STYLES */
+
+.container {
+  width: 100%;
+  height: 100vh;
+  padding-top: 30vh;
+  color: #ffe6ff;
+  
+}
+
+.form-box-ls {
+  width: 80%;
+  max-width: 300px;
+  min-height: fit-content;
+  padding-bottom: 20px;
+  min-width: fit-content;
+  font-family: var(--font-family-head);
+}
+
+.form-box-ls h1 {
+  
+  text-align: right;
+  margin-top: 10px;
+  margin-bottom: 10px;
+  font-size: 40px;
+  text-shadow: 0 0 0.6rem #ffe6ff, 0 0 1.5rem #ff65bd,
+  -0.2rem 0.1rem 1rem #ff65bd, 0.2rem 0.1rem 1rem #ff65bd,
+  0 -0.5rem 2rem #ff2483, 0 0.5rem 3rem #ff2483;
+  animation: shine 2s forwards, flicker 3s infinite;
+}
+
+.main-form {
+   display: flex;
+   flex-direction: column;
+   align-items: flex-end;
+}
+
+.main-form h4 {
+  margin-top: 20px;
+  text-align: center;
+  color: #ffe6ff;
+}
+
+.main-form h5 {
+  font-size: 0.95em;
+}
+
+.text-input {
+  display: block;
+  width: 70%;
+  height: 30px;
+  font-size: 18px;
+  padding-left: 15px;
+  margin-top: 15px;
+  margin-bottom: 5px;
+  font-size: 18px;
+  border: none;
+  border-bottom: 2px solid white;
+  background-color: transparent;
+  color: #f7f7f7;
+  outline: none;
+  text-align: right;
+}
+
+.form-button-container {
+  margin-top: 10px;
+}
+
+.landing-link {
+  color: var(--font-color-p);
+  text-shadow: 0 0 0.6rem #ffe6ff, 0 0 1.5rem #ff65bd,
+  -0.2rem 0.1rem 1rem #ff65bd, 0.2rem 0.1rem 1rem #ff65bd,
+  0 -0.5rem 2rem #ff2483, 0 0.5rem 3rem #ff2483;
+  animation: shine 2s forwards, flicker 3s infinite;
+  cursor: pointer;
+  text-decoration: underline;
+}
+
+.login-box {
+  margin-top: 10px;
+  text-align: right;
+}
+
+/* .text-input::placeholder {
+  color: #f7f7f7;
+} */
+
+/* ANIMATIONS */
+
+@keyframes shine {
+  0% {
+    color: #6b1839;
+    text-shadow: none;
+  }
+  100% {
+    color: #ffe6ff;
+    text-shadow: 0 0 0.6rem #ffe6ff, 0 0 1.5rem #ff65bd,
+      -0.2rem 0.1rem 1rem #ff65bd, 0.2rem 0.1rem 1rem #ff65bd,
+      0 -0.5rem 2rem #ff2483, 0 0.5rem 3rem #ff2483;
+  }
+}
+
+@keyframes shine-btn {
+  0% {
+    color: #6b1839;
+    text-shadow: none;
+    box-shadow: none;
+    background-color: transparent;
+  }
+  100% {
+    color: #ffe6ff;
+    border-color: #ff65bd;
+    background-color: #ff65bd;
+    text-shadow: 0 0 0.6rem #ffe6ff, 0 0 1.5rem #ff65bd,
+      -0.2rem 0.1rem 1rem #ff65bd, 0.2rem 0.1rem 1rem #ff65bd,
+      0 -0.5rem 2rem #ff2483, 0 0.5rem 3rem #ff2483;
+  }
+}
+
+@keyframes flicker {
+  from {
+    opacity: 1;
+  }
+
+  4% {
+    opacity: 0.9;
+  }
+
+  6% {
+    opacity: 0.85;
+  }
+
+  8% {
+    opacity: 0.95;
+  }
+
+  10% {
+    opacity: 0.9;
+  }
+
+  11% {
+    opacity: 0.922;
+  }
+
+  12% {
+    opacity: 0.9;
+  }
+
+  14% {
+    opacity: 0.95;
+  }
+
+  16% {
+    opacity: 0.98;
+  }
+
+  17% {
+    opacity: 0.9;
+  }
+
+  19% {
+    opacity: 0.93;
+  }
+
+  20% {
+    opacity: 0.99;
+  }
+
+  24% {
+    opacity: 1;
+  }
+
+  26% {
+    opacity: 0.94;
+  }
+
+  28% {
+    opacity: 0.98;
+  }
+
+  37% {
+    opacity: 0.93;
+  }
+
+  38% {
+    opacity: 0.5;
+  }
+
+  39% {
+    opacity: 0.96;
+  }
+
+  42% {
+    opacity: 1;
+  }
+
+  44% {
+    opacity: 0.97;
+  }
+
+  46% {
+    opacity: 0.94;
+  }
+
+  56% {
+    opacity: 0.9;
+  }
+
+  58% {
+    opacity: 0.9;
+  }
+
+  60% {
+    opacity: 0.99;
+  }
+
+  68% {
+    opacity: 1;
+  }
+
+  70% {
+    opacity: 0.9;
+  }
+
+  72% {
+    opacity: 0.95;
+  }
+
+  93% {
+    opacity: 0.93;
+  }
+
+  95% {
+    opacity: 0.95;
+  }
+
+  97% {
+    opacity: 0.93;
+  }
+
+  to {
+    opacity: 1;
+  }
 }
 
