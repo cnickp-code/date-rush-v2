@@ -24,7 +24,7 @@ html {
 }
 
 body {
-  background-image: url('./media//skyline_bg.jpg');
+  background-image: url('./media/skyline_bg.jpg');
   background-size: 250% 250%;
   background-position: 90% 85%;
   height: 100vh;
@@ -157,7 +157,51 @@ nav {
   -0.2rem 0.1rem 1rem #ff65bd, 0.2rem 0.1rem 1rem #ff65bd;
 }
 
-.item-btn:hover {
+.item-btn2 {
+  background-color: #ff65bd;
+  color: var(--font-color-p);
+  padding: 12px 20px;
+  border: 2px solid var(--font-color-p);
+  cursor: pointer;
+  border-radius: 10px;
+  font-size: 18px;
+  text-shadow: 0 0 0.6rem #ffe6ff, 0 0 1.5rem #ff65bd,
+  -0.2rem 0.1rem 1rem #ff65bd, 0.2rem 0.1rem 1rem #ff65bd;
+}
+
+.item-btn3 {
+  background-color: transparent;
+  color: var(--font-color-p);
+  padding: 12px 20px;
+  border: 2px solid var(--font-color-p);
+  cursor: pointer;
+  border-radius: 10px;
+  font-size: 18px;
+  text-shadow: 0 0 0.6rem #ffe6ff, 0 0 1.5rem #ff65bd,
+  -0.2rem 0.1rem 1rem #ff65bd, 0.2rem 0.1rem 1rem #ff65bd;
+}
+
+.item-btn-selected {
+  padding: 12px 20px;
+  border-radius: 10px;
+  font-size: 18px;
+  color: #ffe6ff;
+  border-color: #ff65bd;
+  background-color: #ff65bd;
+  text-shadow: 0 0 0.6rem #ffe6ff, 0 0 1.5rem #ff65bd,
+    -0.2rem 0.1rem 1rem #ff65bd, 0.2rem 0.1rem 1rem #ff65bd,
+    0 -0.5rem 2rem #ff2483, 0 0.5rem 3rem #ff2483;
+}
+
+.item-btn:hover, .item-btn2:hover, .item-btn3:hover {
+  animation: shine-btn 1s forwards;
+}
+
+.item-btn:active, .item-btn2:active, .item-btn3:active {
+  animation: shine-btn 1s forwards;
+}
+
+.item-btn:focus, .item-btn2:focus, .item-btn3:focus {
   animation: shine-btn 1s forwards;
 }
 
@@ -247,6 +291,80 @@ nav {
 /* .text-input::placeholder {
   color: #f7f7f7;
 } */
+
+/* HOME STYLES */
+.home-container {
+  width: 65%;
+  height: 100vh;
+  padding: 20px;
+  padding-top: 16vh;
+  color: #ffe6ff;
+}
+
+.home-header {
+  font-family: var(--font-family-head);
+  margin-top: 10px;
+  margin-bottom: 10px;
+  font-size: 40px;
+  text-shadow: 0 0 0.6rem #ffe6ff, 0 0 1.5rem #ff65bd,
+  -0.2rem 0.1rem 1rem #ff65bd, 0.2rem 0.1rem 1rem #ff65bd,
+  0 -0.5rem 2rem #ff2483, 0 0.5rem 3rem #ff2483;
+  animation: shine 2s forwards, flicker 3s infinite;
+}
+
+.home-body {
+  padding-left: 10px;
+}
+
+.home-header h1 {
+  font-size: 60px;
+}
+
+/* STEP STYLES */
+
+.combobox-container {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.step-container {
+  width: 80%;
+  height: 100vh;
+  padding: 20px;
+  padding-top: 16vh;
+  color: #ffe6ff;
+}
+
+.step-header {
+  font-family: var(--font-family-head);
+  margin-top: 10px;
+  margin-bottom: 10px;
+  font-size: 50px;
+  text-shadow: 0 0 0.6rem #ffe6ff, 0 0 1.5rem #ff65bd,
+  -0.2rem 0.1rem 1rem #ff65bd, 0.2rem 0.1rem 1rem #ff65bd,
+  0 -0.5rem 2rem #ff2483, 0 0.5rem 3rem #ff2483;
+  animation: shine 2s forwards, flicker 3s infinite;
+}
+
+.search {
+  padding: 5px 10px;
+}
+
+.compass {
+  background-image: url('./media/compass.png');
+  background-size: contain;
+  background-repeat: no-repeat;
+  height: 29px;
+  width: 29px;
+}
+
+.step-button-container {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  width: 100%;
+}
 
 /* ANIMATIONS */
 

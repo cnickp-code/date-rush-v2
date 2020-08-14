@@ -2,7 +2,7 @@ import React from 'react'
 import TokenService from '../services/token-service';
 
 const DRContext = React.createContext({
-    
+
 });
 
 export default DRContext;
@@ -13,11 +13,15 @@ export class DRContextProvider extends React.Component {
         this.state = {
             login: false,
             intro: true,
+            location: null,
+            latLng: null,
+            places: [],
+
         }
-        
+
         const jwtPayload = TokenService.parseAuthToken()
 
-        if(jwtPayload) {
+        if (jwtPayload) {
             this.state.user = {
                 user_id: jwtPayload.userId,
                 email: jwtPayload.email,
@@ -38,11 +42,26 @@ export class DRContextProvider extends React.Component {
         })
     }
 
+    handleSetLocation = (latLng, location) => {
+        this.setState({
+            latLng,
+            location
+        })
+    }
+
+    handleSetPlaces = (places) => {
+        this.setState({
+            places
+        })
+    }
+
     render() {
         const value = {
             ...this.state,
             toggleLanding: this.toggleLanding,
-            toggleIntro: this.toggleIntro
+            toggleIntro: this.toggleIntro,
+            handleSetLocation: this.handleSetLocation,
+            handleSetPlaces: this.handleSetPlaces,
         }
 
         return (
