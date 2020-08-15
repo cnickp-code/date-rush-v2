@@ -38,8 +38,16 @@ class Results extends React.Component {
         return (
             <div className="results-container">
                 <h1 className="step-header text-center mb-10">Your Date!</h1>
-                <p className="results-location"><i class="fas fa-map-marked-alt"></i> {' '} Current Location</p>
-                <p className="text-center fs-xs color-p"><i>Click the buttons to show each category</i></p>
+                <div className="upper-results">
+                    <div className="left-results-container">
+                        <p className="results-location"><i class="fas fa-map-marked-alt"></i> {' '} Current Location</p>
+                        <p className="fs-xs color-p"><i>Click the buttons to show each category</i></p>
+                    </div>
+                    <div className="right-results-container">
+                        <button className="item-btn">Save Date</button>
+                    </div>
+                </div>
+
                 <div className="results-buttons mt-20">
                     <button className="item-btn3" onClick={this.setTypeActivity}><i className="fas fa-tree home-step-icon"></i></button>
                     <button className="item-btn3" onClick={this.setTypeMeal}><i className="fas fa-hamburger home-step-icon"></i></button>
@@ -49,7 +57,7 @@ class Results extends React.Component {
                 {(this.state.type === 'Activity') && <ActivityItem />}
                 {(this.state.type === 'Meal') && <MealItem />}
                 {/* <RestaurantItem /> */}
-                {(this.state.type === 'Drink') && <Drinkitem /> }
+                {(this.state.type === 'Drink') && <Drinkitem />}
                 {(this.state.type === 'Show') && <ShowItem />}
             </div>
         )

@@ -95,10 +95,10 @@ const ActivityItem = (props) => {
 
                 {showDetails &&
                 <>
-                    <div className="flex-container">
+                    <div className="flex-container2">
 
 
-                        <div className="left-container">
+                        <div className="left-activity-container">
                             {/* <p className="text-center">{props.activity.address}</p> */}
                             <p className="text-center color-p">123 Fake St.</p>
 
@@ -120,7 +120,7 @@ const ActivityItem = (props) => {
 
 
 
-                        <div className="right-container">
+                        <div className="right-activity-container">
                             <div className="map-container" >
                                 <GoogleMap
                                     mapContainerStyle={mapContainerStyle}

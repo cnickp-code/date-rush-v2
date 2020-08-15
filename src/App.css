@@ -479,7 +479,26 @@ nav {
 
 .results-location {
   color: var(--font-color-p);
-  text-align: center;
+  /* text-align: center; */
+}
+
+.upper-results {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+}
+
+.left-results-container {
+  padding-left: 20px;
+  width: 60%;
+}
+
+.right-results-container{
+  width: 40%;
+  display: flex;
+  flex-direction: row;
+  justify-content: flex-end;
+  padding-right: 20px;
 }
 
 /* ITEM STYLES */
@@ -523,6 +542,14 @@ nav {
 
 .left-container {
   width: 50%;
+}
+
+.left-activity-container {
+  width: 100%;
+}
+
+.right-activity-container {
+  width: 100%;
 }
 
 .left-drink-container {
