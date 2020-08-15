@@ -21,11 +21,12 @@
 
 html {
   font-family: var(--font-family-p);
+  color: var(--font-color-p);
 }
 
 body {
   background-image: url('./media/skyline_bg.jpg');
-  background-size: 250% 250%;
+  background-size: 225% 225%;
   background-position: 90% 85%;
   height: 100vh;
   width: 100vw;
@@ -34,6 +35,22 @@ body {
 
 .body-pos-home {
   background-position: 20% 85%;
+}
+
+.body-pos-step2 {
+  background-position: 20% 70%;
+}
+
+.body-pos-step3 {
+  background-position: 20% 45%;
+}
+
+.body-pos-step4 {
+  background-position: 20% 35%;
+}
+
+.body-pos-results {
+  background-position: 20% 0%;
 }
 
 main {
@@ -60,6 +77,7 @@ nav {
   -webkit-box-shadow: 0px 3px 5px 0px rgba(0,0,0,0.75);
   -moz-box-shadow: 0px 3px 5px 0px rgba(0,0,0,0.75);
   box-shadow: 0px 3px 5px 0px rgba(0,0,0,0.75);
+  z-index: 10;
 }
 
 .left-nav-container {
@@ -76,7 +94,7 @@ nav {
 .logo-text {
   font-size: 24px;
   font-family: var(--font-family-head);
-  color: var(--color-main-1);
+  color: #f788c7;
   /* text-shadow: 0 0 0.6rem #ffe6ff, 0 0 1.5rem #ff65bd,
   -0.2rem 0.1rem 1rem #ff65bd, 0.2rem 0.1rem 1rem #ff65bd,
   0 -0.5rem 2rem #ff2483, 0 0.5rem 3rem #ff2483;
@@ -146,6 +164,23 @@ nav {
 
 }
 
+.color-p {
+  color: var(--font-color-p);
+}
+
+.flex-center {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.flex-col {
+  display: flex;
+  flex-direction: column;
+}
+
+/* BUTTONS */
+
 .item-btn {
   background-color: #ff65bd;
   color: var(--font-color-p);
@@ -155,6 +190,8 @@ nav {
   border-radius: 5px;
   text-shadow: 0 0 0.6rem #ffe6ff, 0 0 1.5rem #ff65bd,
   -0.2rem 0.1rem 1rem #ff65bd, 0.2rem 0.1rem 1rem #ff65bd;
+  outline: none;
+  text-decoration: none;
 }
 
 .item-btn2 {
@@ -167,6 +204,7 @@ nav {
   font-size: 18px;
   text-shadow: 0 0 0.6rem #ffe6ff, 0 0 1.5rem #ff65bd,
   -0.2rem 0.1rem 1rem #ff65bd, 0.2rem 0.1rem 1rem #ff65bd;
+  outline: none;
 }
 
 .item-btn3 {
@@ -179,9 +217,37 @@ nav {
   font-size: 18px;
   text-shadow: 0 0 0.6rem #ffe6ff, 0 0 1.5rem #ff65bd,
   -0.2rem 0.1rem 1rem #ff65bd, 0.2rem 0.1rem 1rem #ff65bd;
+  outline: none;
+}
+
+.item-btn4 {
+  width: 92px;
+  background-color: transparent;
+  color: var(--font-color-p);
+  padding: 12px 20px;
+  border: 2px solid var(--font-color-p);
+  cursor: pointer;
+  border-radius: 10px;
+  font-size: 18px;
+  text-shadow: 0 0 0.6rem #ffe6ff, 0 0 1.5rem #ff65bd,
+  -0.2rem 0.1rem 1rem #ff65bd, 0.2rem 0.1rem 1rem #ff65bd;
+  outline: none;
 }
 
 .item-btn-selected {
+  padding: 12px 20px;
+  border-radius: 10px;
+  font-size: 18px;
+  color: #ffe6ff;
+  border-color: #ff65bd;
+  background-color: #ff65bd;
+  text-shadow: 0 0 0.6rem #ffe6ff, 0 0 1.5rem #ff65bd,
+    -0.2rem 0.1rem 1rem #ff65bd, 0.2rem 0.1rem 1rem #ff65bd,
+    0 -0.5rem 2rem #ff2483, 0 0.5rem 3rem #ff2483;
+}
+
+.item-btn4-selected {
+  width: 92px;
   padding: 12px 20px;
   border-radius: 10px;
   font-size: 18px;
@@ -330,15 +396,40 @@ nav {
 
 .step-container {
   width: 80%;
-  height: 100vh;
+  height: 100%;
   padding: 20px;
-  padding-top: 16vh;
+  padding-top: 26vh;
   color: #ffe6ff;
 }
 
+.step2-container {
+  width: 80%;
+  height: 100%;
+  padding: 20px;
+  padding-top: 26vh;
+  color: #ffe6ff;
+}
+
+.step3-container {
+  width: 80%;
+  height: 100%;
+  padding: 20px;
+  padding-top: 26vh;
+  color: #ffe6ff;
+}
+
+.step4-container {
+  width: 80%;
+  height: 100%;
+  padding: 20px;
+  padding-top: 26vh;
+  color: #ffe6ff;
+}
+
+
+
 .step-header {
   font-family: var(--font-family-head);
-  margin-top: 10px;
   margin-bottom: 10px;
   font-size: 50px;
   text-shadow: 0 0 0.6rem #ffe6ff, 0 0 1.5rem #ff65bd,
@@ -352,7 +443,7 @@ nav {
 }
 
 .compass {
-  background-image: url('./media/compass.png');
+  background-image: url('./media/safari.png');
   background-size: contain;
   background-repeat: no-repeat;
   height: 29px;
@@ -362,8 +453,159 @@ nav {
 .step-button-container {
   display: flex;
   flex-direction: row;
-  justify-content: space-between;
+  justify-content: space-evenly;
   width: 100%;
+}
+
+.step-button-container2 {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-around;
+  width: 50%;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+/* RESULTS STYLES */
+.results-container {
+  padding-top: 10%;
+}
+
+.results-buttons {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-around;
+}
+
+.results-location {
+  color: var(--font-color-p);
+  text-align: center;
+}
+
+/* ITEM STYLES */
+.main-container {
+  width: 100%;
+  margin: 0 auto;
+  padding: 20px;
+}
+
+.border {
+  width: 100%;
+  height: 100%;
+  border-radius: 20px;
+  border: 1px solid var(--font-color-p);
+  padding: 20px;
+  background-color: rgba(0,0,0,0.8);
+  transition: all 0.5s ease;
+}
+
+.border2 {
+  width: 100%;
+  height: auto;
+  border-radius: 20px;
+  border: 1px solid var(--font-color-p);
+  padding: 20px;
+  background-color: rgba(0,0,0,0.8);
+  transition: all 0.5s ease;
+}
+
+.flex-container {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-around;
+}
+
+.flex-container2 {
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+}
+
+.left-container {
+  width: 50%;
+}
+
+.left-drink-container {
+  width: 100%;
+}
+
+
+.right-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: 50%;
+}
+
+.item-header {
+  font-family: var(--font-family-head);
+  margin-bottom: 10px;
+  font-size: 30px;
+  text-shadow: 0 0 0.6rem #ffe6ff, 0 0 1.5rem #ff65bd,
+  -0.2rem 0.1rem 1rem #ff65bd, 0.2rem 0.1rem 1rem #ff65bd,
+  0 -0.5rem 2rem #ff2483, 0 0.5rem 3rem #ff2483;
+  animation: shine 2s forwards, flicker 3s infinite;
+}
+
+.preview-image { 
+  width: 80%;
+  max-width: 200px;
+  position: relative;
+  height: auto;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.show-image {
+  position: relative;
+  width: auto;
+  height: 20%;
+  max-height: 250px;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.map-container {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+}
+
+.divider {
+  width: 60%;
+  border-top: 1px dotted #f7f7f7;
+  margin: 15px auto;
+}
+
+.open {
+  font-size: 1.2rem;
+  color: rgb(0, 185, 0);
+}
+
+.closed {
+  color: rgb(255, 83, 83);
+}
+
+.rating-container {
+  width: 90%;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-evenly;
+  color: yellow;
+  margin-left: auto;
+  margin-right: auto;
+  font-size: 20px;
+}
+
+.info {
+  display: flex;
+  justify-content: center;
+  margin-left: auto;
+  margin-right: auto;
+  margin-top: 20px;
+  font-size: 30px;
+  width: 40px;
+  cursor: pointer;
 }
 
 /* ANIMATIONS */

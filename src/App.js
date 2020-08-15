@@ -6,6 +6,9 @@ import Header from './components/Header/Header';
 import Home from './components/Home/Home';
 import StepOne from './components/Steps/StepOne';
 import StepTwo from './components/Steps/StepTwo';
+import StepThree from './components/Steps/StepThree';
+import StepFour from './components/Steps/StepFour';
+import Results from './components/Results/Results';
 
 import TokenServices from './services/token-service';
 import DRContext from './context/DRContext';
@@ -36,9 +39,13 @@ class App extends React.Component {
           
           {tokenBool && <div><Header /></div>}
 
-          {tokenBool && <StepTwo />}
-          {/* {tokenBool && <StepOne />} */}
-          {/* {tokenBool && <Home />} */}
+          {tokenBool && (this.context.step === 5) && <Results />}
+
+          {tokenBool && (this.context.step === 4) && <StepFour />}
+          {tokenBool && (this.context.step === 3) && <StepThree />}
+          {tokenBool && (this.context.step === 2) && <StepTwo />}
+          {tokenBool && (this.context.step === 1) && <StepOne />}
+          {tokenBool && (this.context.step === 0) && <Home />}
 
           {!this.context.login && !tokenBool &&
             <Transition

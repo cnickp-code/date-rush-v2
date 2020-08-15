@@ -16,7 +16,7 @@ export class DRContextProvider extends React.Component {
             location: null,
             latLng: null,
             places: [],
-
+            step: 0,
         }
 
         const jwtPayload = TokenService.parseAuthToken()
@@ -28,6 +28,12 @@ export class DRContextProvider extends React.Component {
                 user_name: jwtPayload.sub
             }
         }
+    }
+
+    handleSetStep = (step) => {
+        this.setState({
+            step
+        })
     }
 
     toggleLanding = () => {
@@ -62,6 +68,7 @@ export class DRContextProvider extends React.Component {
             toggleIntro: this.toggleIntro,
             handleSetLocation: this.handleSetLocation,
             handleSetPlaces: this.handleSetPlaces,
+            handleSetStep: this.handleSetStep
         }
 
         return (

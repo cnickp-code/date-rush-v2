@@ -28,7 +28,7 @@ import usePlacesAutocomplete from 'use-places-autocomplete';
 
 const mapContainerStyle = {
     width: '250px',
-    height: '250px'
+    height: '150px'
 }
 
 const center = {
@@ -48,7 +48,7 @@ const google = window.google = window.google ? window.google : {};
 
 const StepOne = () => {
 
-    const { handleSetLocation, handleSetPlaces } = useContext(DRContext);
+    const { handleSetLocation, handleSetPlaces, handleSetStep } = useContext(DRContext);
     const [address, setAddress] = useState(null);
     const [latLng, setLatLng] = useState(null);
 
@@ -144,6 +144,12 @@ const StepOne = () => {
         initMap();
     }
 
+    const handleNextStep = () => {
+        document.body.classList.remove('body-pos-home');
+        document.body.classList.add('body-pos-step2');
+        handleSetStep(2);
+    }
+
     const mapRef = React.useRef();
     const onMapLoad = React.useCallback((map) => {
         mapRef.current = map;
@@ -151,7 +157,8 @@ const StepOne = () => {
 
     return (
         <div className="step-container">
-            <h1 className="mb-10 step-header">Step 1</h1>
+            <div className="border2">
+            <h1 className="mb-10 step-header text-center">Step 1</h1>
             <h5 >Set a location</h5>
             <p className="mb-10 fs-xs"><i>Compass uses current location</i></p>
             <form id="home-form" onSubmit={handleSubmit}>
@@ -202,13 +209,14 @@ const StepOne = () => {
                     </GoogleMap>
                 </div>
 
-                <button type="submit" className="item-btn2 mt-10 pad-5">Next Step</button>
-
+                <div className="flex-center">
+                    <button type="submit" className="item-btn mt-10 pad-5 center" onClick={handleNextStep}>Next</button>
+                </div>
 
             </form>
 
-
             <div id='map'></div>
+            </div>
 
         </div>
     )
