@@ -37,7 +37,7 @@ class Results extends React.Component {
     render() {
         return (
             <div className="results-container">
-                <h1 className="step-header text-center mb-10">Your Date!</h1>
+                <h1 className="results-header text-center mb-10">Your Date!</h1>
                 <div className="upper-results">
                     <div className="left-results-container">
                         <p className="results-location"><i class="fas fa-map-marked-alt"></i> {' '} Current Location</p>

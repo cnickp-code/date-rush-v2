@@ -1,6 +1,8 @@
 import React from 'react';
-import { useContext, useState, useEffect } from 'react';
 import DRContext from '../../context/DRContext';
+import { NavLink, Redirect } from 'react-router-dom';
+import ExtApiService from '../../services/external-api-service';
+import { useContext, useState, useEffect } from 'react';
 import config from '../../config';
 import mapStyles from '../../services/map-style';
 
@@ -26,11 +28,11 @@ import {
 import '@reach/combobox/styles.css'
 import usePlacesAutocomplete from 'use-places-autocomplete';
 
+const libraries = ['places'];
 const mapContainerStyle = {
     width: '250px',
-    height: '150px'
+    height: '250px'
 }
-
 const center = {
     lat: 43.653225,
     lng: -79.383186
@@ -40,24 +42,24 @@ const options = {
     disableDefaultUI: true,
 }
 
-
-
-
-const libraries = ['places'];
 const google = window.google = window.google ? window.google : {};
 
-const StepOne = () => {
+const LocationForm = () => {
 
-    const { handleSetLocation, handleSetPlaces, handleSetStep } = useContext(DRContext);
+    const [forward, setForward] = useState(false);
+    const { handleSetLocation, handleSetPlaces } = useContext(DRContext);
     const [address, setAddress] = useState(null);
     const [latLng, setLatLng] = useState({});
-
+    const [places, setPlaces] = useState([]);
 
     let tempLoc = center;
 
-    if (Object.keys(latLng).length > 0) {
+    console.log(latLng);
+
+    if(latLng) {
         tempLoc = latLng;
     }
+
 
     const { isLoaded, loadError } = useLoadScript({
         googleMapsApiKey: config.GOOGLE_API_KEY,
@@ -67,7 +69,7 @@ const StepOne = () => {
     const { ready, value, suggestions: { status, data }, setValue, clearSuggestions } = usePlacesAutocomplete({
         requestOptions: {
             location: { lat: () => latLng.lat, lng: () => latLng.lng },
-            radius: 20 * 1000,
+            radius: 200 * 1000,
         },
     });
 
@@ -94,10 +96,10 @@ const StepOne = () => {
         };
         let placeStore = [];
         let placeObj = {};
-
-        service.nearbySearch(request, function (results, status, pagetoken) {
+    
+        service.nearbySearch(request, function(results, status, pagetoken) {
             console.log(results.length);
-            for (let i = 0; i < results.length; i++) {
+            for(let i = 0; i < results.length; i++) {
                 // console.log(results[i].name, results[i].types)
                 // console.log(results[i]);
                 let latNum = results[i].geometry.location.lat();
@@ -106,7 +108,7 @@ const StepOne = () => {
                 let placeOpen = true;
                 let placeRating = results[i].rating;
                 let photoUrl = 'https://img.favpng.com/15/13/2/urban-park-cartoon-png-favpng-GyXzR7iKQadY6M60ED5b38UwK.jpg';
-                if (results[i].photos && results[i].photos.length > 0) {
+                if(results[i].photos && results[i].photos.length > 0) {
                     photoUrl = results[i].photos[0].getUrl({ maxHeight: 250 });
                 }
 
@@ -142,90 +144,80 @@ const StepOne = () => {
 
         handleSetLocation(latLng, address);
         initMap();
-    }
+        
 
-    const handleNextStep = () => {
-        document.body.classList.remove('body-pos-home');
-        document.body.classList.add('body-pos-step2');
-        handleSetStep(2);
-    }
 
-    const mapRef = React.useRef();
-    const onMapLoad = React.useCallback((map) => {
-        mapRef.current = map;
-    }, [])
+        // ExtApiService.getLocation(location)
+        //     .then(loc => {
+        //         let lat = loc.data[0].latitude;
+        //         let long = loc.data[0].longitude;
+
+        //         let latLong = lat + ',' + long;
+        //         handleSetLocation(latLong, location);
+        //         setForward(true);
+        //     })
+    }
+    console.log(tempLoc)
 
     return (
-        <div className="step-container">
-            <div className="border2">
-                <h1 className="mb-10 step-header text-center">Step 1</h1>
-                <div className="s1-top-container">
-                    <div className="s1-left">
-                        <h5 >Set a location</h5>
-                        <p className="mb-10 fs-xs"><i>Compass uses current location</i></p>
-                    </div>
-                    <div className="compass"></div>
+        <div className="form-container">
+            <h4 className="mb-10 text-center home-header">Get Started!</h4>
+            <form id="home-form" onSubmit={handleSubmit}>
+                <div className="combobox-container">
+                    <Combobox
+                        onSelect={async (address) => {
+                            setValue(address, false);
+                            clearSuggestions();
+                            try {
+                                const results = await getGeocode({ address });
+                                const { lat, lng } = await getLatLng(results[0]);
+                                const latLngObj = { lat: lat, lng: lng };
+                                
+                                setLatLng(latLngObj);
+                                setAddress(address);
+                            } catch (e) {
+                                console.log('error!')
+                            }
+                        }}
+                    >
+                        <ComboboxInput
+                            value={value}
+                            onChange={(e) => {
+                                setValue(e.target.value)
+                            }}
+                            disabled={!ready}
+                            placeholder='Enter a city'
+                            className='search'
+                        />
+                        <ComboboxPopover>
+                            {status === 'OK' && data.map(({ id, description }, i) => <ComboboxOption key={i} value={description} />)}
+                        </ComboboxPopover>
+                    </Combobox>
                 </div>
 
-                <form id="home-form" onSubmit={handleSubmit}>
+                <div className="map-container mt-20" >
+                    <GoogleMap
+                        mapContainerStyle={mapContainerStyle}
+                        zoom={13}
+                        center={tempLoc}
+                        options={options}
+                    >
+                        <Marker position={tempLoc} />
 
-                    <div className="combobox-container">
-                        <Combobox
-                            onSelect={async (address) => {
-                                setValue(address, false);
-                                clearSuggestions();
-                                try {
-                                    const results = await getGeocode({ address });
-                                    const { lat, lng } = await getLatLng(results[0]);
-                                    const latLngObj = { lat: lat, lng: lng };
+                    </GoogleMap>
+                </div>
 
-                                    setLatLng(latLngObj);
-                                    setAddress(address);
-                                } catch (e) {
-                                    console.log('error!')
-                                }
-                            }}
-                        >
-                            <ComboboxInput
-                                value={value}
-                                onChange={(e) => {
-                                    setValue(e.target.value)
-                                }}
-                                disabled={!ready}
-                                placeholder='Enter a city'
-                                className='search'
-                            />
-                            <ComboboxPopover>
-                                {status === 'OK' && data.map(({ id, description }, i) => <ComboboxOption key={i} value={description} />)}
-                            </ComboboxPopover>
-                        </Combobox>
+                <button type="submit" className="item-btn mt-10 pad-5">Start</button>
 
 
-                    </div>
+            </form>
 
-                    <div className="map-container mt-20" >
-                        <GoogleMap
-                            mapContainerStyle={mapContainerStyle}
-                            zoom={13}
-                            center={tempLoc}
-                            options={options}
-                        >
-                            <Marker position={tempLoc} />
-
-                        </GoogleMap>
-                    </div>
-
-                    <div className="flex-center">
-                        <button type="submit" className="item-btn mt-10 pad-5 center" onClick={handleNextStep}>Next</button>
-                    </div>
-
-                </form>
-
-                <div id='map'></div>
-            </div>
+            <div id='map'></div>
 
         </div>
+
+        
     )
 }
 
-export default StepOne;
+export default LocationForm;

@@ -41,11 +41,11 @@ const StepThree = () => {
                 <p className="fs-xs"><i>This will determine whether the generator will give you cocktails to make yourself or bars in the area!</i></p>
                 <div className="step-button-container mt-20">
 
-                    {(type === 'Alc') && <button className="item-btn-selected mt-10 pad-5" >Yes</button>}
-                    {!(type === 'Alc') && <button className="item-btn3 mt-10 pad-5" onClick={replaceAlcButton}>Yes</button>}
+                    {(type === 'Alc') && <button className="item-btn4-selected mt-10 pad-5" >Yes</button>}
+                    {!(type === 'Alc') && <button className="item-btn4 mt-10 pad-5" onClick={replaceAlcButton}>Yes</button>}
 
-                    {(type === 'NA') && <button className="item-btn-selected mt-10 pad-5">No</button>}
-                    {!(type === 'NA') && <button className="item-btn3 mt-10 pad-5" onClick={replaceNAButton}>No</button>}
+                    {(type === 'NA') && <button className="item-btn4-selected mt-10 pad-5">No</button>}
+                    {!(type === 'NA') && <button className="item-btn4 mt-10 pad-5" onClick={replaceNAButton}>No</button>}
                 </div>
                 <div className="step-button-container2 mt-20">
                     <button className="item-btn" onClick={handlePreviousStep}>Prev</button>

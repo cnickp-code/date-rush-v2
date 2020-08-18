@@ -19,8 +19,8 @@ const ActivityItem = (props) => {
     }
 
     const mapContainerStyle = {
-        width: '120px',
-        height: '120px'
+        width: '200px',
+        height: '200px'
     }
     // const center = props.activity.location;
     const center = {
@@ -114,6 +114,8 @@ const ActivityItem = (props) => {
                             <div className="rating-container">
                                 {stars}
                             </div>
+
+                            <div className="divider"></div>
 
                         </div>
 
