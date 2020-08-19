@@ -33,16 +33,16 @@ const ActivityItem = (props) => {
     }
 
     let openDisplay = <p className="text-center closed">Closed</p>
-    // let openBool = props.activity.isOpen;
-    let openBool = true;
+    let openBool = props.activity.isOpen;
+    // let openBool = true;
 
     if (openBool) {
         openDisplay = <p className="text-center open">Open Now</p>
     }
 
     let stars;
-    // let rating = props.activity.rating;
-    let rating = 4.3;
+    let rating = props.activity.rating;
+    // let rating = 4.3;
 
     if (rating) {
         stars = [];
@@ -80,11 +80,11 @@ const ActivityItem = (props) => {
             <div className="border">
 
 
-                {/* <h3 className="item-header text-center mb-10">{props.activity.name}</h3> */}
-                <h3 className="item-header text-center mb-10">Fake Monument</h3>
+                <h3 className="item-header text-center mb-10">{props.activity.name}</h3>
+                {/* <h3 className="item-header text-center mb-10">Fake Monument</h3> */}
                 <p className="text-center">
-                    {/* <img src={props.activity.photoUrl} className="preview-image mb-10" /> */}
-                    <img src='https://img.favpng.com/15/13/2/urban-park-cartoon-png-favpng-GyXzR7iKQadY6M60ED5b38UwK.jpg' className="preview-image mb-10" />
+                    <img src={props.activity.photoUrl} className="preview-image mb-10" />
+                    {/* <img src='https://img.favpng.com/15/13/2/urban-park-cartoon-png-favpng-GyXzR7iKQadY6M60ED5b38UwK.jpg' className="preview-image mb-10" /> */}
                 </p>
 
                 {!showDetails &&
@@ -99,8 +99,8 @@ const ActivityItem = (props) => {
 
 
                         <div className="left-activity-container">
-                            {/* <p className="text-center">{props.activity.address}</p> */}
-                            <p className="text-center color-p">123 Fake St.</p>
+                            <p className="text-center">{props.activity.address}</p>
+                            {/* <p className="text-center color-p">123 Fake St.</p> */}
 
                             <div className="divider"></div>
 

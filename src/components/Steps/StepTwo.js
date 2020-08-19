@@ -5,13 +5,16 @@ import DRContext from '../../context/DRContext';
 const StepTwo = () => {
 
     const [type, setDateType] = useState(null);
-    const { handleSetStep } = useContext(DRContext);
+    const { handleSetStep, handleSetDateType, handleSetShowNext, handleSetMeal } = useContext(DRContext);
 
     const replaceInButton = () => {
         setDateType(null);
         setTimeout(() => {
             setDateType('In');
         }, 400);
+        handleSetDateType('In')
+        handleSetShowNext(true);
+        handleSetMeal('In')
     }
 
     const replaceOutButton = () => {
@@ -19,6 +22,9 @@ const StepTwo = () => {
         setTimeout(() => {
             setDateType('Out');
         }, 400);
+        handleSetDateType('Out')
+        handleSetShowNext(true);
+        handleSetMeal('Out')
     }
 
     const handlePreviousStep = () => {
@@ -50,10 +56,10 @@ const StepTwo = () => {
                 {!(type === 'Out') && <button className="item-btn3 mt-10 pad-5"onClick={replaceOutButton}>Going Out</button>}
             </div>
 
-            <div className="step-button-container2 mt-20">
+            {/* <div className="step-button-container2 mt-20">
                 <button className="item-btn" onClick={handlePreviousStep}>Prev</button>
                 <button className="item-btn" onClick={handleNextStep}>Next</button>
-            </div>
+            </div> */}
             </div>
         </div>
     )

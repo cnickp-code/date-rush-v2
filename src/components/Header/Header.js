@@ -12,6 +12,8 @@ class Header extends React.Component {
         document.body.classList.remove('body-pos-step1');
         document.body.classList.add('body-pos-home');
         this.context.handleSetStep(0);
+        this.context.toggleBuildBool(false);
+        this.context.handleSetLocation(null, null);
     }
 
     render() {

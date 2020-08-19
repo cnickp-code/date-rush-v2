@@ -5,20 +5,26 @@ import DRContext from '../../context/DRContext';
 const StepFour = () => {
 
     const [type, setShowType] = useState(null);
-    const { handleSetStep } = useContext(DRContext);
+    const { handleSetStep, handleSetShowNext, handleSetShowType, handleSetShow } = useContext(DRContext);
 
     const replaceMovieButton = () => {
         setShowType(null);
+        handleSetShowType('Movie');
+        handleSetShow('Movie');
         setTimeout(() => {
             setShowType('Movie');
         }, 400);
+        handleSetShowNext(true);
     }
 
     const replaceTVButton = () => {
         setShowType(null);
+        handleSetShowType('TV');
+        handleSetShow('TV');
         setTimeout(() => {
             setShowType('TV');
         }, 400);
+        handleSetShowNext(true);
     }
 
     const handlePreviousStep = () => {
@@ -49,10 +55,10 @@ const StepFour = () => {
                 {(type === 'TV') && <button className="item-btn4-selected mt-10 pad-5">TV</button>}
                 {!(type === 'TV') && <button className="item-btn4 mt-10 pad-5"onClick={replaceTVButton}>TV</button>}
             </div>
-            <div className="step-button-container2 mt-20">
+            {/* <div className="step-button-container2 mt-20">
                 <button className="item-btn" onClick={handlePreviousStep}>Prev</button>
                 <button className="item-btn" onClick={handleNextStep}>Next</button>
-            </div>
+            </div> */}
             </div>
         </div>
     )

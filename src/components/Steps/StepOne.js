@@ -48,7 +48,7 @@ const google = window.google = window.google ? window.google : {};
 
 const StepOne = () => {
 
-    const { handleSetLocation, handleSetPlaces, handleSetStep } = useContext(DRContext);
+    const { handleSetLocation, handleSetPlaces, handleSetStep, handleSetShowNext } = useContext(DRContext);
     const [address, setAddress] = useState(null);
     const [latLng, setLatLng] = useState({});
 
@@ -141,6 +141,7 @@ const StepOne = () => {
         e.preventDefault();
 
         handleSetLocation(latLng, address);
+        handleSetShowNext(true);
         initMap();
     }
 
@@ -162,9 +163,9 @@ const StepOne = () => {
                 <div className="s1-top-container">
                     <div className="s1-left">
                         <h5 >Set a location</h5>
-                        <p className="mb-10 fs-xs"><i>Compass uses current location</i></p>
+                        <p className="mb-10 fs-xs"><i>Must set location to continue.</i></p>
                     </div>
-                    <div className="compass"></div>
+                    {/* <div className="compass"></div> */}
                 </div>
 
                 <form id="home-form" onSubmit={handleSubmit}>
@@ -181,6 +182,7 @@ const StepOne = () => {
 
                                     setLatLng(latLngObj);
                                     setAddress(address);
+                            
                                 } catch (e) {
                                     console.log('error!')
                                 }
@@ -196,7 +198,9 @@ const StepOne = () => {
                                 className='search'
                             />
                             <ComboboxPopover>
-                                {status === 'OK' && data.map(({ id, description }, i) => <ComboboxOption key={i} value={description} />)}
+                                <ComboboxList className="step-popover">
+                                    {status === 'OK' && data.map(({ id, description }, i) => <ComboboxOption key={i} value={description} />)}
+                                </ComboboxList>
                             </ComboboxPopover>
                         </Combobox>
 
@@ -216,7 +220,7 @@ const StepOne = () => {
                     </div>
 
                     <div className="flex-center">
-                        <button type="submit" className="item-btn mt-10 pad-5 center" onClick={handleNextStep}>Next</button>
+                        <button type="submit" className="item-btn mt-10 pad-5 center">Set Location</button>
                     </div>
 
                 </form>

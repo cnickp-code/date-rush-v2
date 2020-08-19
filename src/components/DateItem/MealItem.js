@@ -7,14 +7,16 @@ const MealItem = (props) => {
     const toggleDetails = () => {
         setShowDetails(!showDetails);
     }
+
+    console.log(props.meal);
     return (
         <div className="main-container">
             <div className="border">
-                {/* <h3 className="step-header text-center mb-10">{this.props.meal.strMeal}</h3> */}
-                <h3 className="item-header text-center mb-10">Beef Wellington</h3>
+                <h3 className="item-header text-center mb-10">{props.meal.strMeal}</h3>
+                {/* <h3 className="item-header text-center mb-10">Beef Wellington</h3> */}
                 <p className="text-center">
-                    {/* <img src={this.props.meal.strMealThumb} className="preview-image mb-10" /> */}
-                    <img src='https://www.clipartkey.com/mpngs/m/77-776665_lunch-clipart-lunch-date-couple-date-night-cartoon.png' className="preview-image mb-10" />
+                    <img src={props.meal.strMealThumb} className="preview-image mb-10" />
+                    {/* <img src='https://www.clipartkey.com/mpngs/m/77-776665_lunch-clipart-lunch-date-couple-date-night-cartoon.png' className="preview-image mb-10" /> */}
                 </p>
                 {!showDetails &&
                     <div className="info" onClick={toggleDetails}>
@@ -24,11 +26,11 @@ const MealItem = (props) => {
 
                 {showDetails &&
                     <>
-                        {/* <p className="text-center mb-20 color-p">Category: {this.props.meal.strArea}</p> */}
-                        <p className="text-center mb-20 color-p">Category: Asian</p>
+                        <p className="text-center mb-20 color-p">Category: {props.meal.strArea}</p>
+                        {/* <p className="text-center mb-20 color-p">Category: Asian</p> */}
                         <div className="flex-center">
-                            {/* <a href={this.props.meal.strSource} className="recipe-link center" target="_blank">View Recipe</a> */}
-                            <a href='' className="item-btn center" target="_blank">View Recipe</a>
+                            <a href={props.meal.strSource} className="item-btn center" target="_blank">View Recipe</a>
+                            {/* <a href='' className="item-btn center" target="_blank">View Recipe</a> */}
                         </div>
                         <div className="info" onClick={toggleDetails}>
                             <i class="fas fa-minus-circle"></i>

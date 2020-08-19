@@ -12,6 +12,7 @@ import Results from './components/Results/Results';
 import Profile from './components/Profile/Profile';
 import BalloonButton from './components/BalloonButton/BalloonButton';
 
+import ExtApiService from './services/external-api-service';
 import TokenServices from './services/token-service';
 import DRContext from './context/DRContext';
 import { Transition } from 'react-spring/renderprops';
@@ -23,6 +24,23 @@ class App extends React.Component {
     super(props);
   }
 
+  componentDidMount() {
+    ExtApiService.getAlcDrinks()
+    .then(drinks => {
+      this.context.handleSetInitialDrink(drinks.drinks[0])
+    })
+
+    ExtApiService.getMovieGenres()
+    .then(results => {
+      this.context.handleSetMovieGenres(results.genres);
+    })
+
+    ExtApiService.getTvGenres()
+    .then(results => {
+      this.context.handleSetTVGenres(results.genres);
+    })
+  }
+
   render() {
     let tokenBool = TokenServices.hasAuthToken();
     let showReg = !this.context.login;
@@ -32,8 +50,17 @@ class App extends React.Component {
       document.body.classList.add('body-pos-home');
     }
 
-    console.log(this.context.latLng);
-    console.log(this.context.location);
+    console.log('-------------------------------');
+    console.log('LATLNG', this.context.latLng);
+    console.log('Location', this.context.location);
+    console.log('DateType', this.context.dateType);
+    console.log('Step: ', this.context.step);
+    console.log('RESTAURANTS', this.context.restaurants);
+    console.log('RESTAURANT', this.context.restaurant);
+    console.log('MEAL', this.context.meal);
+    console.log('DRINK', this.context.drink);
+    console.log('SHOW', this.context.show)
+    console.log('GENRES', this.context.movieGenres);
 
     return (
       <div className="App">
@@ -45,14 +72,15 @@ class App extends React.Component {
 
           {tokenBool && (this.context.step === 5) && <Results />}
 
+          {!(this.context.step === 5) && 
           <div className="main-step-container">
             {tokenBool && (this.context.step === 4) && <StepFour />}
             {tokenBool && (this.context.step === 3) && <StepThree />}
             {tokenBool && (this.context.step === 2) && <StepTwo />}
             {tokenBool && (this.context.step === 1) && <StepOne />}
             {tokenBool && (this.context.step === 0) && <Home />}
-            <BalloonButton />
-          </div>
+            {this.context.buildBool && !(this.context.step === 5) && <BalloonButton />}
+          </div>}
 
           {!this.context.login && !tokenBool &&
             <Transition
