@@ -9,20 +9,20 @@ const RestaurantItem = (props) => {
         setShowDetails(!showDetails);
     }
 
-    // let restaurantMain = this.props.restaurant;
-    // let featuredImg = restaurantMain.featured_image;
+    let restaurantMain = props.restaurant;
+    let featuredImg = restaurantMain.featured_image;
     let avgCost = <p className="text-center">Avg Cost for Two: Not Available</p>
 
-    // if (restaurantMain.featured_image === '' || restaurantMain.featured_image === null) {
-    //     featuredImg = "https://www.clipartkey.com/mpngs/m/77-776665_lunch-clipart-lunch-date-couple-date-night-cartoon.png"
-    // }
-    // if (restaurantMain.average_cost_for_two > 0) {
-    //     avgCost = <p className="text-center">Avg Cost for Two: {'$'}{restaurantMain.average_cost_for_two}</p>
-    // }
+    if (restaurantMain.featured_image === '' || restaurantMain.featured_image === null) {
+        featuredImg = "https://www.clipartkey.com/mpngs/m/77-776665_lunch-clipart-lunch-date-couple-date-night-cartoon.png"
+    }
+    if (restaurantMain.average_cost_for_two > 0) {
+        avgCost = <p className="text-center">Avg Cost for Two: {'$'}{restaurantMain.average_cost_for_two}</p>
+    }
 
     let stars;
-    // let rating = restaurantMain.user_rating.aggregate_rating;
-    let rating = 4.5;
+    let rating = restaurantMain.user_rating.aggregate_rating;
+    // let rating = 4.5;
 
     if (rating) {
         stars = [];
@@ -56,11 +56,11 @@ const RestaurantItem = (props) => {
     return (
         <div className="main-container">
             <div className="border">
-                {/* <h3 className="item-header text-center mb-10">{restaurantMain.name}</h3> */}
-                <h3 className="item-header text-center mb-10">Buca Di Beppo</h3>
+                <h3 className="item-header text-center mb-10">{restaurantMain.name}</h3>
+                
                 <p className="text-center">
-                    {/* <img src={featuredImg} className="preview-image mb-10" /> */}
-                    <img src='https://www.clipartkey.com/mpngs/m/77-776665_lunch-clipart-lunch-date-couple-date-night-cartoon.png' className="preview-image mb-10" />
+                    <img src={featuredImg} className="preview-image mb-10" />
+                    {/* <img src='https://www.clipartkey.com/mpngs/m/77-776665_lunch-clipart-lunch-date-couple-date-night-cartoon.png' className="preview-image mb-10" /> */}
                 </p>
                 {!showDetails &&
                     <div className="info" onClick={toggleDetails}>
@@ -70,20 +70,20 @@ const RestaurantItem = (props) => {
 
                 {showDetails && 
                 <>
-                    {/* <p className="text-center">{restaurantMain.location.address}</p>
-                    <p className="text-center">Phone Number: {restaurantMain.phone_numbers}</p> */}
-                    <p className="text-center">123 Fake St.</p>
-                    <p className="text-center">Phone Number: 123-345-5678</p>
+                    <p className="text-center">{restaurantMain.location.address}</p>
+                    <p className="text-center">Phone Number: {restaurantMain.phone_numbers}</p>
+                    {/* <p className="text-center">123 Fake St.</p>
+                    <p className="text-center">Phone Number: 123-345-5678</p> */}
 
                     <div className="divider center mb-20 mt-20"></div>
 
-                    {/* <p className="text-center">Cuisine Type: {restaurantMain.cuisines}</p> */}
-                    <p className="text-center">Cuisine Type: Asian</p>
+                    <p className="text-center">Cuisine Type: {restaurantMain.cuisines}</p>
+                    {/* <p className="text-center">Cuisine Type: Asian</p> */}
 
                     <div className="divider center mb-20 mt-20"></div>
 
-                    {/* <p className="text-center">Price Range: {'$'.repeat(restaurantMain.price_range)}</p> */}
-                    <p className="text-center">Price Range: $$$$</p>
+                    <p className="text-center">Price Range: {'$'.repeat(restaurantMain.price_range)}</p>
+                    {/* <p className="text-center">Price Range: $$$$</p> */}
                     {avgCost}
 
                     <div className="divider center mb-20 mt-20"></div>
@@ -94,8 +94,8 @@ const RestaurantItem = (props) => {
                     <div className="divider center mb-20 mt-20"></div>
 
                     <div className="flex-center flex-col mt-10">
-                        {/* <a href={restaurantMain.url} className="item-btn center" target="_blank">See Full Details</a> */}
-                        <a href='' className="item-btn center" target="_blank">See Full Details</a>
+                        <a href={restaurantMain.url} className="item-btn center" target="_blank">See Full Details</a>
+                        {/* <a href='' className="item-btn center" target="_blank">See Full Details</a> */}
                         <p className="text-center fs-xs mt-5"><i>Powered By Zomato</i></p>
                     </div>
 

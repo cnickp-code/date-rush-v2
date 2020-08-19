@@ -36,19 +36,26 @@ class Results extends React.Component {
         })
     }
 
+
     render() {
-        console.log(this.context.meal);
+        let header = <h1 className="results-header text-center mb-10">Your Date!</h1>
+
+        if(this.context.summaryBool) {
+            header = <h1 className="results-header text-center mb-10">{this.context.summaryDate.name}</h1>
+        }
+
         return (
             <div className="results-container">
-                <h1 className="results-header text-center mb-10">Your Date!</h1>
+                {header}
                 <div className="upper-results">
                     <div className="left-results-container">
                         <p className="results-location"><i class="fas fa-map-marked-alt"></i> {' '} {this.context.location}</p>
                         <p className="fs-xs color-p"><i>Click the buttons to show each category</i></p>
                     </div>
+                    {!this.context.summaryBool &&
                     <div className="right-results-container">
                         <button className="item-btn">Save Date</button>
-                    </div>
+                    </div>}
                 </div>
 
                 <div className="results-buttons mt-20">
@@ -58,8 +65,8 @@ class Results extends React.Component {
                     <button className="item-btn3" onClick={this.setTypeShow}><i className="fas fa-tv home-step-icon"></i></button>
                 </div>
                 {(this.state.type === 'Activity') && <ActivityItem activity={this.context.activity}/>}
-                {(this.state.type === 'Meal') && <MealItem meal={this.context.meal}/>}
-                {/* <RestaurantItem /> */}
+                {(this.state.type === 'Meal') && (this.context.mealType === 'In') && <MealItem meal={this.context.meal}/>}
+                {(this.state.type === 'Meal') && (this.context.mealType === 'Out') && <RestaurantItem restaurant={this.context.restaurant}/>}
                 {(this.state.type === 'Drink') && <Drinkitem drink={this.context.drink} />}
                 {(this.state.type === 'Show') && <ShowItem movieBool={this.context.movieBool} show={this.context.show} />}
             </div>

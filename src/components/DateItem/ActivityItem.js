@@ -22,11 +22,7 @@ const ActivityItem = (props) => {
         width: '200px',
         height: '200px'
     }
-    // const center = props.activity.location;
-    const center = {
-        lat: 43.653225,
-        lng: -79.383186
-    }
+    const center = props.activity.location;
     const options = {
         styles: mapStyles,
         disableDefaultUI: true,

@@ -23,9 +23,13 @@ export class DRContextProvider extends React.Component {
             movieBool: null,
             movieGenres: null,
             tvGenres: null,
+            myDates: null,
+            summaryDate: null,
+            summaryBool: false,
 
             location: null,
             dateType: null,
+            mealType: null,
             showType: null,
             show: null,
             activity: null,
@@ -43,6 +47,32 @@ export class DRContextProvider extends React.Component {
                 user_name: jwtPayload.sub
             }
         }
+    }
+
+    handleSetSummaryDate = (date) => {
+        this.setState({
+            summaryDate: date
+        })
+    }
+    
+    handleSetSummaryBool = (bool) => {
+        this.setState({
+            summaryBool: bool
+        })
+    }
+
+    handleDeleteDateItem = (id) => {
+        let newDateItems = this.state.myDates.filter(item => item.id !== id);
+
+        this.setState({
+            myDates: newDateItems
+        })
+    }
+
+    handleSetMyDates = (dates) => {
+        this.setState({
+            myDates: dates
+        })
     }
 
     handleSetShowType = (type) => {
@@ -131,6 +161,12 @@ export class DRContextProvider extends React.Component {
         })
     }
 
+    handleSetOnlyLocation = (location) => {
+        this.setState({
+            location
+        })
+    }
+
     handleSetLocation = (latLng, location) => {
         this.setState({
             latLng,
@@ -151,9 +187,18 @@ export class DRContextProvider extends React.Component {
     }
 
     handleSetShowType = (type) => {
-        this.setState({
-            showType: type
-        })
+        if(type === 'Movie') {
+            this.setState({
+                movieBool: true,
+                showType: type
+            })
+        } else if(type === 'TV') {
+            this.setState({
+                movieBool: false,
+                showType: type
+            })
+        }
+
     }
 
     handleSetShow = (type) => {
@@ -207,6 +252,24 @@ export class DRContextProvider extends React.Component {
         })
     }
 
+    handleSetSummaryMeal = (meal) => {
+        this.setState({
+            meal
+        })
+    }
+
+    handleSetSummaryRestaurant = (restaurant) => {
+        this.setState({
+            restaurant
+        })
+    }
+
+    handleSetMealType = (type) => {
+        this.setState({
+            mealType: type
+        })
+    }
+
     handleSetMeal = (type) => {
         if (type === 'In') {
             ExtApiService.getMeal()
@@ -216,6 +279,9 @@ export class DRContextProvider extends React.Component {
                     })
                 })
         } else if (type === 'Out') {
+            this.setState({
+                mealType: 'Out'
+            })
             this.setRestaurants();
         }
 
@@ -227,7 +293,7 @@ export class DRContextProvider extends React.Component {
         const restaurant = this.state.restaurants[randIndex];
 
         this.setState({
-            restaurant
+            restaurant: restaurant.restaurant
         })
     }
 
@@ -251,6 +317,24 @@ export class DRContextProvider extends React.Component {
                 })
             i++;
         }
+    }
+
+    handleSetSummaryActivity = (activity) => {
+        this.setState({
+            activity
+        })
+    }
+
+    handleSetSummaryDrink = (drink) => {
+        this.setState({
+            drink
+        })
+    }
+
+    handleSetSummaryShow = (show) => {
+        this.setState({
+            show
+        })
     }
 
     handleSetRandomActivity = () => {
@@ -287,7 +371,18 @@ export class DRContextProvider extends React.Component {
             handleSetShowType: this.handleSetShowType,
             handleSetShow: this.handleSetShow,
             handleSetMovieGenres: this.handleSetMovieGenres,
-            handleSetTVGenres: this.handleSetTVGenres
+            handleSetTVGenres: this.handleSetTVGenres,
+            handleSetMyDates: this.handleSetMyDates,
+            handleDeleteDateItem: this.handleDeleteDateItem,
+            handleSetOnlyLocation: this.handleSetOnlyLocation,
+            handleSetSummaryActivity: this.handleSetSummaryActivity,
+            handleSetSummaryMeal: this.handleSetSummaryMeal,
+            handleSetSummaryRestaurant: this.handleSetSummaryRestaurant,
+            handleSetSummaryDrink: this.handleSetSummaryDrink,
+            handleSetSummaryShow: this.handleSetSummaryShow,
+            handleSetMealType: this.handleSetMealType,
+            handleSetSummaryBool: this.handleSetSummaryBool,
+            handleSetSummaryDate: this.handleSetSummaryDate,
         }
 
         return (

@@ -14,6 +14,7 @@ class Header extends React.Component {
         this.context.handleSetStep(0);
         this.context.toggleBuildBool(false);
         this.context.handleSetLocation(null, null);
+        this.context.handleSetSummaryBool(false);
     }
 
     render() {

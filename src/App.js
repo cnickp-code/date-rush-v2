@@ -12,6 +12,7 @@ import Results from './components/Results/Results';
 import Profile from './components/Profile/Profile';
 import BalloonButton from './components/BalloonButton/BalloonButton';
 
+import DateRushApiService from './services/dr-api-service';
 import ExtApiService from './services/external-api-service';
 import TokenServices from './services/token-service';
 import DRContext from './context/DRContext';
@@ -39,6 +40,12 @@ class App extends React.Component {
     .then(results => {
       this.context.handleSetTVGenres(results.genres);
     })
+
+    DateRushApiService.getDates()
+    .then(results => {
+      console.log('my dates ', results)
+      this.context.handleSetMyDates(results);
+    })
   }
 
   render() {
@@ -51,11 +58,13 @@ class App extends React.Component {
     }
 
     console.log('-------------------------------');
+    console.log(this.context.login);
     console.log('LATLNG', this.context.latLng);
     console.log('Location', this.context.location);
     console.log('DateType', this.context.dateType);
     console.log('Step: ', this.context.step);
     console.log('RESTAURANTS', this.context.restaurants);
+    console.log('ACTIVITY', this.context.activity);
     console.log('RESTAURANT', this.context.restaurant);
     console.log('MEAL', this.context.meal);
     console.log('DRINK', this.context.drink);
@@ -68,11 +77,11 @@ class App extends React.Component {
           
           {tokenBool && <div><Header /></div>}
 
-          {/* {tokenBool && <Profile />} */}
+          {tokenBool && (this.context.step === 6) && <Profile />}
 
           {tokenBool && (this.context.step === 5) && <Results />}
 
-          {!(this.context.step === 5) && 
+          {!(this.context.step === 5) && tokenBool &&
           <div className="main-step-container">
             {tokenBool && (this.context.step === 4) && <StepFour />}
             {tokenBool && (this.context.step === 3) && <StepThree />}
