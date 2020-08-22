@@ -148,6 +148,9 @@ class Signup extends React.Component {
 
     toggleLanding = () => {
         this.context.toggleLanding();
+        this.setState({
+            error: null
+        })
     }
 
     render() {
