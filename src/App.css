@@ -472,6 +472,7 @@ nav {
   width: 85%;
   max-width: 450px;
   height: 90vh;
+  min-height: 700px;
   justify-content: space-between;
   position: relative;
 }
@@ -497,7 +498,8 @@ nav {
   height: 100%;
   padding: 20px;
   padding-right: 5px;
-  padding-top: 26vh;
+  /* padding-top: 26vh; */
+  padding-top: 10rem;
   color: #ffe6ff;
 }
 
@@ -505,7 +507,7 @@ nav {
   width: 80%;
   height: 100%;
   padding: 20px;
-  padding-top: 26vh;
+  padding-top: 10rem;
   color: #ffe6ff;
 }
 
@@ -513,7 +515,7 @@ nav {
   width: 80%;
   height: 100%;
   padding: 20px;
-  padding-top: 26vh;
+  padding-top: 10rem;
   color: #ffe6ff;
 }
 
@@ -521,15 +523,8 @@ nav {
   width: 80%;
   height: 100%;
   padding: 20px;
-  padding-top: 26vh;
+  padding-top: 10rem;
   color: #ffe6ff;
-}
-
-.step-invis {
-  width: 80%;
-  height: 100%;
-  padding: 20px;
-  padding-top: 26vh;
 }
 
 .step-header {
@@ -1055,11 +1050,11 @@ nav {
   }
 }
 
-@media screen and (max-height: 600px) {
+/* @media screen and (max-height: 600px) {
   body {
     min-height: 600px;
   }
-}
+} */
 
 /* @media screen and (min-height: 600px) {
   body {
