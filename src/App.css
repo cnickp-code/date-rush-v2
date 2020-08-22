@@ -33,6 +33,7 @@ body {
   min-height: 700px;
   width: 100vw;
   transition: 2s ease;
+  position: relative;
 }
 
 .body-pos-landing {
