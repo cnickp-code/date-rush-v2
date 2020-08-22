@@ -11,28 +11,40 @@ class Results extends React.Component {
     constructor(props) {
         super(props);
         this.state = {
+            carousel: false,
+            carStep: 0,
             type: null
         }
     }
 
     setTypeActivity = () => {
         this.setState({
-            type: 'Activity'
+            carousel: true,
+            type: 'Activity',
+            carStep: 0,
         })
+        this.context.handleSetActivity(0)
+
     }
     setTypeMeal = () => {
         this.setState({
-            type: 'Meal'
+            carousel: true,
+            type: 'Meal',
+            carStep: 0,
         })
     }
     setTypeDrink = () => {
         this.setState({
-            type: 'Drink'
+            carousel: true,
+            type: 'Drink',
+            carStep: 0,
         })
     }
     setTypeShow = () => {
         this.setState({
-            type: 'Show'
+            carousel: true,
+            type: 'Show',
+            carStep: 0,
         })
     }
 
@@ -40,11 +52,30 @@ class Results extends React.Component {
         this.context.toggleSaveBool(true);
         document.documentElement.style.overflow = 'hidden';
         document.body.scroll = 'no';
+        this.setState({
+            carousel: false,
+            carStep: 0,
+            type: null
+        })
     }
 
     handleGoBack = () => {
         this.context.handleSetStep(6);
         this.context.handleSetSummaryBool(false);
+    }
+
+    prevStep = () => {
+        this.setState({
+            carStep: this.state.carStep - 1
+        })
+        this.context.handleSetActivity(this.state.carStep - 1)
+    }
+
+    nextStep = () => {
+        this.setState({
+            carStep: this.state.carStep + 1
+        })
+        this.context.handleSetActivity(this.state.carStep + 1)
     }
 
     render() {
@@ -59,7 +90,7 @@ class Results extends React.Component {
                 {header}
                 <div className="upper-results">
                     <div className="left-results-container">
-                        <p className="results-location"><i class="fas fa-map-marked-alt"></i> {' '} {this.context.location}</p>
+                        <p className="results-location"><i className="fas fa-map-marked-alt"></i> {' '} {this.context.location}</p>
                         <p className="fs-xs color-p"><i>Click the buttons to show each category</i></p>
                     </div>
                     {!this.context.summaryBool &&
@@ -79,6 +110,18 @@ class Results extends React.Component {
                     <button className="item-btn3" onClick={this.setTypeDrink}><i className="fas fa-cocktail home-step-icon"></i></button>
                     <button className="item-btn3" onClick={this.setTypeShow}><i className="fas fa-tv home-step-icon"></i></button>
                 </div>
+
+                {this.state.carousel && !this.context.summaryBool &&
+                <div className="carousel center">  
+                    {!(this.state.carStep === 0) && <div className="bb-arrow" onClick={this.prevStep}><i className="fas fa-caret-left"></i></div>}
+                    {(this.state.carStep === 0) && <div className="res-arrow" ><i className="fas fa-caret-left"></i></div>}
+                    <div className={((this.state.carStep === 0) ? "res-circle res-shine" : "res-circle")}><i className="fas fa-circle"></i></div>
+                    <div className={((this.state.carStep === 1) ? "res-circle res-shine" : "res-circle")}><i className="fas fa-circle"></i></div>
+                    <div className={((this.state.carStep === 2) ? "res-circle res-shine" : "res-circle")}><i className="fas fa-circle"></i></div>
+                    {!(this.state.carStep === 2) && <div className="bb-arrow" onClick={this.nextStep}><i className="fas fa-caret-right"></i></div>}
+                    {(this.state.carStep === 2) && <div className="res-arrow" ><i className="fas fa-caret-right"></i></div>}
+                </div>}
+
                 {(this.state.type === 'Activity') && <ActivityItem activity={this.context.activity} />}
                 {(this.state.type === 'Meal') && (this.context.mealType === 'In') && <MealItem meal={this.context.meal} />}
                 {(this.state.type === 'Meal') && (this.context.mealType === 'Out') && <RestaurantItem restaurant={this.context.restaurant} />}

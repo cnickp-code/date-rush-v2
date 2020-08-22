@@ -33,8 +33,8 @@ class BalloonButton extends React.Component {
                 {/* {(this.context.step === 5) &&
                     <img src="https://i.ibb.co/PFdwK1D/output-onlinepngtools-2.png" className={((this.context.step === 5) ? "bb-img bb-float" : "bb-img")}></img>
                 } */}
-                {(this.context.step === 5) && <div className="bb-invis" onClick={this.handlePrevStep}>
-                </div>}
+                {/* {(this.context.step === 5) && <div className="bb-invis" onClick={this.handlePrevStep}>
+                </div>} */}
                 {!(this.context.step === 5) && <div className="bb-arrow text-center" onClick={this.handlePrevStep}>
                     <i class="fas fa-caret-down"></i>
                 </div>

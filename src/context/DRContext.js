@@ -445,6 +445,14 @@ export class DRContextProvider extends React.Component {
         })
     }
 
+    handleSetActivity = (index) => {
+        const activity = this.state.places[index];
+
+        this.setState({
+            activity
+        })
+    }
+
     handleSetRandomActivity = () => {
         const randIndex = Math.floor(Math.random() * Math.floor(this.state.places.length - 1));
         const activity = this.state.places[randIndex];
@@ -499,8 +507,9 @@ export class DRContextProvider extends React.Component {
             setBars: this.setBars,
             handleSetDrinkPlace: this.handleSetDrinkPlace,
             handleSetDrinkTypeOnly: this.handleSetDrinkTypeOnly,
-            handleSetSummaryDrinkPlace: this.handleSetSummaryDrinkPlace
-            
+            handleSetSummaryDrinkPlace: this.handleSetSummaryDrinkPlace,
+            // CAROUSEL 
+            handleSetActivity: this.handleSetActivity,
         }
 
         return (
