@@ -145,7 +145,7 @@ const StepOne = () => {
 
         handleSetLocation(latLng, address);
         handleSetShowNext(true);
-        
+        setNextBool(true);
         initMap();
     }
 
@@ -184,7 +184,7 @@ const StepOne = () => {
                         <Combobox
                             onSelect={async (address) => {
                                 setValue(address, false);
-                                setNextBool(true);
+                                setLocBool(true)
                                 clearSuggestions();
                                 try {
                                     const results = await getGeocode({ address });
@@ -203,7 +203,8 @@ const StepOne = () => {
                                 value={value}
                                 onChange={(e) => {
                                     setValue(e.target.value)
-                                    setLocBool(false)
+                                    
+                                    
                                 }}
                                 disabled={!ready}
                                 placeholder='Enter a city'
