@@ -70,7 +70,7 @@ class SaveDateOverlay extends React.Component {
                 <div className="sd-modal">
                     <form id="name-submit" onSubmit={this.handleSubmit}>
                         <h1 className="item-header text-center">Name Your Date</h1>
-                        <input id="name" className="sd-text" placeholder="Type name here" onChange={this.handleInputChange} required />
+                        <input id="name" className="sd-text" maxlength="25" placeholder="Type name here" onChange={this.handleInputChange} required />
                         <div className="save-btn-container">
                             <button type="submit" className="item-btn2">Save</button>
                             <button className="item-btn2" onClick={this.closeOverlay}>Cancel</button>

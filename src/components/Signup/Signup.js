@@ -172,6 +172,7 @@ class Signup extends React.Component {
                                 name="user_name"
                                 id="user_name"
                                 className="text-input"
+                                maxlength="25"
                                 onBlur={this.handleUserNameError}
                                 required
                             />
@@ -182,6 +183,7 @@ class Signup extends React.Component {
                                 name="email"
                                 id="email"
                                 className="text-input"
+                                maxlength="25"
                                 onBlur={this.handleEmailError}
                                 required
                             />
@@ -192,6 +194,7 @@ class Signup extends React.Component {
                                 id="password"
                                 placeholder="Enter password"
                                 className="text-input"
+                                maxlength="35"
                                 onBlur={this.handlePasswordError}
                                 ref={this.password}
                                 required
@@ -204,6 +207,7 @@ class Signup extends React.Component {
                                 id="repeat_password"
                                 placeholder="Confirm password"
                                 className="text-input"
+                                maxlength="35"
                                 onBlur={this.handleRepeatPasswordError}
                                 required
                             />
