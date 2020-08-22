@@ -169,7 +169,6 @@ const ProfileItem = (props) => {
                 photoUrl = results.photos[0].getUrl({ maxHeight: 250 });
             }
 
-
             placeObj = {
                 id: results.place_id,
                 name: results.name,
