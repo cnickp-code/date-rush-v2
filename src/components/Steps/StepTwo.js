@@ -29,18 +29,6 @@ const StepTwo = () => {
         handleSetMeal('Out')
     }
 
-    const handlePreviousStep = () => {
-        document.body.classList.remove('body-pos-step2');
-        document.body.classList.add('body-pos-step1');
-        handleSetStep(1);
-    }
-
-    const handleNextStep = () => {
-        document.body.classList.remove('body-pos-step2');
-        document.body.classList.add('body-pos-step3');
-        handleSetStep(3);
-    }
-
     return (
         <div className="step2-container">
             <div className="border2">

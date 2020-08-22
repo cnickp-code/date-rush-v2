@@ -159,9 +159,9 @@ export class DRContextProvider extends React.Component {
         } else if (step === 5) {
             document.body.classList.remove('body-pos-step4');
             document.body.classList.add('body-pos-results');
-            this.setState({
-                buildBool: false
-            })
+            // this.setState({
+            //     buildBool: false
+            // })
         } else if (step === 6) {
             document.body.classList.remove('body-pos-results');
             document.body.classList.remove('body-pos-home');
@@ -264,21 +264,37 @@ export class DRContextProvider extends React.Component {
         }
     }
 
+    findNonAlcDrinks = () => {
+        ExtApiService.getAlcDrinks()
+        .then(drinks => {
+            if(drinks.drinks[0].strAlcoholic === 'Non alcoholic') {
+                this.setState({
+                    drink: drinks.drinks[0],
+                })
+            } else {
+                this.findNonAlcDrinks();
+            }
+        })
+    }
+
+    findAlcDrinks = () => {
+        ExtApiService.getAlcDrinks()
+        .then(drinks => {
+            if(drinks.drinks[0].strAlcoholic === 'Alcoholic') {
+                this.setState({
+                    drink: drinks.drinks[0],
+                })
+            } else {
+                this.findAlcDrinks();
+            }
+        })
+    }
+
     handleSetDrink = (type) => {
         if (type === 'Alc') {
-            ExtApiService.getAlcDrinks()
-                .then(drinks => {
-                    this.setState({
-                        drink: drinks.drinks[0],
-                    })
-                })
+            this.findAlcDrinks();
         } else if (type === 'NA') {
-            ExtApiService.getAlcDrinks()
-                .then(drinks => {
-                    this.setState({
-                        drink: drinks.drinks[0],
-                    })
-                })
+            this.findNonAlcDrinks();
         }
     }
 

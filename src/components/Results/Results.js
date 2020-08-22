@@ -54,9 +54,6 @@ class Results extends React.Component {
             header = <h1 className="results-header text-center mb-10">{this.context.summaryDate.name}</h1>
         }
 
-        console.log(this.state.type);
-        console.log(this.context.mealType);
-
         return (
             <div className="results-container">
                 {header}

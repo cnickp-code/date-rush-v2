@@ -20,15 +20,25 @@ class BalloonButton extends React.Component {
 
     render() {
         let currentStep = this.context.step;
+        console.log(currentStep);
         return (
             <div className="bb-container">
-                <div className={(this.context.showNext ? 'bb-arrow text-center' : 'bb-arrow text-center hidden')} onClick={this.handleNextStep}>
+
+                <div className={((this.context.showNext && this.context.location) ? 'bb-arrow text-center' : 'bb-arrow text-center hidden')} onClick={this.handleNextStep}>
                     <i class="fas fa-caret-up"></i>
                 </div>
-                <img src="https://i.ibb.co/PFdwK1D/output-onlinepngtools-2.png" className="bb-img bb-animation"></img>
-                <div className="bb-arrow text-center" onClick={this.handlePrevStep}>
+                {!(this.context.step === 5) &&
+                    <img src="https://i.ibb.co/PFdwK1D/output-onlinepngtools-2.png" className="bb-img bb-animation"></img>
+                }
+                {(this.context.step === 5) &&
+                    <img src="https://i.ibb.co/PFdwK1D/output-onlinepngtools-2.png" className={((this.context.step === 5) ? "bb-img bb-float" : "bb-img")}></img>
+                }
+                {(this.context.step === 5) && <div className="bb-invis" onClick={this.handlePrevStep}>
+                </div>}
+                {!(this.context.step === 5) && <div className="bb-arrow text-center" onClick={this.handlePrevStep}>
                     <i class="fas fa-caret-down"></i>
                 </div>
+                }
             </div>
         )
     }

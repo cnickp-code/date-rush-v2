@@ -31,6 +31,7 @@ const DateRushApiService = {
         })
     },
     deleteDateItem(dateId, callback) {
+        console.log('DELETE REACHED');
         return fetch(`${config.MAIN_API_ENDPOINT}/dates/${dateId}`, {
             method: 'DELETE',
             headers: {

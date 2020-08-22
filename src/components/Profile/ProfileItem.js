@@ -1,7 +1,7 @@
 import React from 'react';
 import { useContext } from 'react';
 import DRContext from '../../context/DRContext';
-import DateRushApiService from '../../context/DRContext';
+import DateRushApiService from '../../services/dr-api-service';
 import ExtApiService from '../../services/external-api-service';
 
 const google = window.google = window.google ? window.google : {};
@@ -85,7 +85,9 @@ const ProfileItem = (props) => {
     }
 
     const handleDeleteItem = () => {
-        DateRushApiService.deleteDateItem(props.date.id, handleDeleteDateItem);
+        DateRushApiService.deleteDateItem(props.date.id, handleDeleteDateItem)
+
+
     }
 
     const initMap = () => {

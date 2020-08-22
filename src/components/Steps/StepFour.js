@@ -27,18 +27,6 @@ const StepFour = () => {
         handleSetShowNext(true);
     }
 
-    const handlePreviousStep = () => {
-        document.body.classList.remove('body-pos-step4');
-        document.body.classList.add('body-pos-step3');
-        handleSetStep(3);
-    }
-
-    const handleNextStep = () => {
-        document.body.classList.remove('body-pos-step4');
-        document.body.classList.add('body-pos-results');
-        handleSetStep(5);
-    }
-
     return (
         <div className="step4-container">
             <div className="border2">

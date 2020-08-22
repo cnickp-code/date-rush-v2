@@ -18,7 +18,7 @@ import DateRushApiService from './services/dr-api-service';
 import ExtApiService from './services/external-api-service';
 import TokenServices from './services/token-service';
 import DRContext from './context/DRContext';
-import { Transition } from 'react-spring/renderprops';
+import { Spring, Transition } from 'react-spring/renderprops';
 
 class App extends React.Component {
   static contextType = DRContext;
@@ -29,25 +29,25 @@ class App extends React.Component {
 
   componentDidMount() {
     ExtApiService.getAlcDrinks()
-    .then(drinks => {
-      this.context.handleSetInitialDrink(drinks.drinks[0])
-    })
+      .then(drinks => {
+        this.context.handleSetInitialDrink(drinks.drinks[0])
+      })
 
     ExtApiService.getMovieGenres()
-    .then(results => {
-      this.context.handleSetMovieGenres(results.genres);
-    })
+      .then(results => {
+        this.context.handleSetMovieGenres(results.genres);
+      })
 
     ExtApiService.getTvGenres()
-    .then(results => {
-      this.context.handleSetTVGenres(results.genres);
-    })
+      .then(results => {
+        this.context.handleSetTVGenres(results.genres);
+      })
 
     DateRushApiService.getDates()
-    .then(results => {
-      console.log('my dates ', results)
-      this.context.handleSetMyDates(results);
-    })
+      .then(results => {
+        console.log('my dates ', results)
+        this.context.handleSetMyDates(results);
+      })
   }
 
   render() {
@@ -55,7 +55,7 @@ class App extends React.Component {
     let showReg = !this.context.login;
     let showLogin = this.context.login;
 
-    if(tokenBool) {
+    if (tokenBool) {
       document.body.classList.add('body-pos-home');
     }
 
@@ -83,17 +83,45 @@ class App extends React.Component {
 
           {tokenBool && (this.context.step === 6) && <Profile />}
 
-          {tokenBool && (this.context.step === 5) && <Results />}
+          {tokenBool && (this.context.step === 5) &&
+            <>
+              <Spring
+                from={{ opacity: 0 }}
+                to={{ opacity: 1 }}
+                config={{ delay: 1000, duration: 1000 }}
+              >
+                {props => (
+                  <div style={props} >
+                    <Results />
+                  </div>
+                )}
+              </Spring>
+            </>
+          }
 
-          {!(this.context.step === 5) && tokenBool &&
-          <div className="main-step-container">
-            {tokenBool && (this.context.step === 4) && <StepFour />}
-            {tokenBool && (this.context.step === 3) && <StepThree />}
-            {tokenBool && (this.context.step === 2) && <StepTwo />}
-            {tokenBool && (this.context.step === 1) && <StepOne />}
-            {tokenBool && (this.context.step === 0) && <Home />}
-            {this.context.buildBool && !(this.context.step === 5) && <BalloonButton />}
-          </div>}
+          {tokenBool &&
+            <div className="main-step-container">
+              {tokenBool && (this.context.step === 4) && <StepFour />}
+              {tokenBool && (this.context.step === 3) && <StepThree />}
+              {tokenBool && (this.context.step === 2) && <StepTwo />}
+              {tokenBool && (this.context.step === 1) && <StepOne />}
+              {tokenBool && (this.context.step === 0) &&
+                <>
+                  <Spring
+                    from={{ opacity: 0 }}
+                    to={{ opacity: 1 }}
+                    config={{ delay: 1000, duration: 1000 }}
+                  >
+                    {props => (
+                      <div style={props} >
+                        <Home />
+                      </div>
+                    )}
+                  </Spring>
+                </>
+              }
+              {this.context.buildBool && <BalloonButton />}
+            </div>}
 
           {!this.context.login && !tokenBool &&
             <Transition
