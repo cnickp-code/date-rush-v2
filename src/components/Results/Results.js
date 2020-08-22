@@ -83,8 +83,10 @@ class Results extends React.Component {
                 {(this.state.type === 'Meal') && (this.context.mealType === 'In') && <MealItem meal={this.context.meal} />}
                 {(this.state.type === 'Meal') && (this.context.mealType === 'Out') && <RestaurantItem restaurant={this.context.restaurant} />}
                 {(this.state.type === 'Drink') && (this.context.mealType === 'In') && <Drinkitem drink={this.context.drink} />}
-                {(this.state.type === 'Drink') && (this.context.mealType === 'Out') && (this.context.drinkType === 'NA') && <ActivityItem activity={this.context.cafe} />}
-                {(this.state.type === 'Drink') && (this.context.mealType === 'Out') && (this.context.drinkType === 'Alc') && <ActivityItem activity={this.context.bar} />}
+                {!this.context.summaryBool && (this.state.type === 'Drink') && (this.context.mealType === 'Out') && (this.context.drinkType === 'NA') && <ActivityItem activity={this.context.cafe} />}
+                {!this.context.summaryBool && (this.state.type === 'Drink') && (this.context.mealType === 'Out') && (this.context.drinkType === 'Alc') && <ActivityItem activity={this.context.bar} />}
+                {this.context.summaryBool && (this.state.type === 'Drink') && (this.context.mealType === 'Out') && (this.context.drinkType === 'NA') && <ActivityItem activity={this.context.drink} />}
+                {this.context.summaryBool && (this.state.type === 'Drink') && (this.context.mealType === 'Out') && (this.context.drinkType === 'Alc') && <ActivityItem activity={this.context.drink} />}
                 {(this.state.type === 'Show') && <ShowItem movieBool={this.context.movieBool} show={this.context.show} />}
             </div>
         )
