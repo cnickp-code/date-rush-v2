@@ -73,11 +73,11 @@ class App extends React.Component {
     console.log('SHOW', this.context.show)
     console.log('GENRES', this.context.movieGenres);
 
-    $(function () {
-      var w = Math.max(document.documentElement.clientWidth, window.innerWidth || 0);
-      var h = Math.max(document.documentElement.clientHeight, window.innerHeight || 0);
-      $("html, body").css({ "width": w, "height": h });
-    });
+    // $(function () {
+    //   var w = Math.max(document.documentElement.clientWidth, window.innerWidth || 0);
+    //   var h = Math.max(document.documentElement.clientHeight, window.innerHeight || 0);
+    //   $("html, body").css({ "width": w, "height": h });
+    // });
 
     return (
       <div className="App">
