@@ -52,6 +52,7 @@ const StepOne = () => {
     const { handleSetLocation, handleSetPlaces, handleSetShowNext } = useContext(DRContext);
     const [address, setAddress] = useState(null);
     const [locBool, setLocBool] = useState(false);
+    const [nextBool, setNextBool] = useState(false);
     const [latLng, setLatLng] = useState({});
 
 
@@ -144,6 +145,7 @@ const StepOne = () => {
 
         handleSetLocation(latLng, address);
         handleSetShowNext(true);
+        setNextBool(true);
         initMap();
     }
 
@@ -235,8 +237,12 @@ const StepOne = () => {
                     </>}
 
                     <div className="flex-center">
-                        <button type="submit" className="item-btn mt-10 pad-5 center">Set Location</button>
+                        <button disabled={!locBool} type="submit" className="item-btn mt-10 pad-5 center">Set Location</button>
                     </div>
+
+                    {nextBool &&
+                        <h5 className="text-center mt-10 mb-0">Click the blue arrow!</h5>
+                    }
 
                 </form>
 

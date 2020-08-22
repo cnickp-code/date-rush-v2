@@ -266,6 +266,11 @@ nav {
   text-decoration: none;
 }
 
+.item-btn:disabled {
+  background-color: #5e5e5e;
+  text-shadow: none;
+}
+
 .item-btn2 {
   background-color: #ff65bd;
   color: var(--font-color-p);
@@ -331,7 +336,7 @@ nav {
     0 -0.5rem 2rem #ff2483, 0 0.5rem 3rem #ff2483;
 }
 
-.item-btn:hover, .item-btn2:hover, .item-btn3:hover, .item-btn4:hover {
+.item-btn:hover:enabled, .item-btn2:hover, .item-btn3:hover, .item-btn4:hover {
   animation: shine-btn 1s forwards;
 }
 

@@ -17,6 +17,8 @@ const google = window.google = window.google ? window.google : {};
 const StepTwo = () => {
 
     const [type, setDateType] = useState(null);
+    const [nextBool, setNextBool] = useState(false);
+
     const {
         latLng,
         setCafes,
@@ -121,6 +123,7 @@ const StepTwo = () => {
         handleSetDateType('In')
         handleSetMealType('In')
         handleSetShowNext(true);
+        setNextBool(true);
         handleSetMeal('In')
     }
 
@@ -133,6 +136,7 @@ const StepTwo = () => {
         handleSetMealType('Out')
         handleSetShowNext(true);
         handleSetMeal('Out')
+        setNextBool(true);
         initMap();
     }
 
@@ -153,6 +157,9 @@ const StepTwo = () => {
                     {!(type === 'Out') && <button className="item-btn3 mt-10 pad-5" onClick={replaceOutButton}>Going Out</button>}
                 </div>
                 <p className="fs-xs text-center mt-10 attention"><i>Make a selection to continue</i></p>
+                {nextBool &&
+                        <h5 className="text-center mt-10 mb-0">Click the blue arrow!</h5>
+                    }
                 {/* <div className="step-button-container2 mt-20">
                 <button className="item-btn" onClick={handlePreviousStep}>Prev</button>
                 <button className="item-btn" onClick={handleNextStep}>Next</button>

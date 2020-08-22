@@ -5,6 +5,7 @@ import Drinkitem from '../DateItem/DrinkItem';
 import RestaurantItem from '../DateItem/RestaurantItem';
 import ShowItem from '../DateItem/ShowItem';
 import DRContext from '../../context/DRContext';
+import NotFoundItem from '../DateItem/NotFoundItem';
 
 class Results extends React.Component {
     static contextType = DRContext;
@@ -79,9 +80,11 @@ class Results extends React.Component {
                     <button className="item-btn3" onClick={this.setTypeDrink}><i className="fas fa-cocktail home-step-icon"></i></button>
                     <button className="item-btn3" onClick={this.setTypeShow}><i className="fas fa-tv home-step-icon"></i></button>
                 </div>
+                {(this.context.restaurants.length === 0) && (this.state.type === 'Meal') && (this.context.mealType === 'Out') && <NotFoundItem />}
+                {(this.context.places.length === 0) && (this.state.type === 'Activity')  && <NotFoundItem />}
                 {(this.state.type === 'Activity') && <ActivityItem activity={this.context.activity} />}
                 {(this.state.type === 'Meal') && (this.context.mealType === 'In') && <MealItem meal={this.context.meal} />}
-                {(this.state.type === 'Meal') && (this.context.mealType === 'Out') && <RestaurantItem restaurant={this.context.restaurant} />}
+                {(this.context.restaurants.length > 0) && (this.state.type === 'Meal') && (this.context.mealType === 'Out') && <RestaurantItem restaurant={this.context.restaurant} />}
                 {(this.state.type === 'Drink') && (this.context.mealType === 'In') && <Drinkitem drink={this.context.drink} />}
                 {!this.context.summaryBool && (this.state.type === 'Drink') && (this.context.mealType === 'Out') && (this.context.drinkType === 'NA') && <ActivityItem activity={this.context.cafe} />}
                 {!this.context.summaryBool && (this.state.type === 'Drink') && (this.context.mealType === 'Out') && (this.context.drinkType === 'Alc') && <ActivityItem activity={this.context.bar} />}

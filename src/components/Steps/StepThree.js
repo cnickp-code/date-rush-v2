@@ -5,6 +5,7 @@ import DRContext from '../../context/DRContext';
 const StepThree = () => {
 
     const [type, setDrinkType] = useState(null);
+    const [nextBool, setNextBool] = useState(false);
     const { dateType, handleSetShowNext, handleSetDrink, handleSetDrinkPlace } = useContext(DRContext);
 
     const replaceAlcButton = () => {
@@ -13,6 +14,7 @@ const StepThree = () => {
             setDrinkType('Alc');
         }, 400);
         handleSetShowNext(true)
+        setNextBool(true);
         
         if(dateType === 'Out') {
             handleSetDrinkPlace('Alc')
@@ -27,6 +29,7 @@ const StepThree = () => {
             setDrinkType('NA');
         }, 400);
         handleSetShowNext(true);
+        setNextBool(true);
         
         if(dateType === 'Out') {
             handleSetDrinkPlace('NA')
@@ -50,6 +53,9 @@ const StepThree = () => {
                     {!(type === 'NA') && <button className="item-btn4 mt-10 pad-5" onClick={replaceNAButton}>No</button>}
                 </div>
                 <p className="fs-xs text-center mt-10 attention"><i>Make a selection to continue</i></p>
+                {nextBool &&
+                        <h5 className="text-center mt-10 mb-0">Click the blue arrow!</h5>
+                    }
                 {/* <div className="step-button-container2 mt-20">
                     <button className="item-btn" onClick={handlePreviousStep}>Prev</button>
                     <button className="item-btn" onClick={handleNextStep}>Next</button>
