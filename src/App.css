@@ -109,6 +109,7 @@ nav {
   padding-left: 20px;
   padding-right: 15px;
   color: var(--color-light-1);
+  cursor: pointer;
 }
 
 .nav-link2 {
@@ -117,12 +118,14 @@ nav {
   padding-right: 30px;
   color: var(--color-light-1);
   /* border-right: 1px solid var(--font-color-p2); */
+  cursor: pointer;
 }
 
 .nav-link3 {
   font-size: 24px;
   padding-left: 20px;
   color: var(--color-light-1);
+  cursor: pointer;
 }
 
 .logo-img {
@@ -144,6 +147,32 @@ nav {
 
 .hidden {
   visibility: hidden;
+}
+
+.alert {
+  display: flex;
+  flex-direction: right;
+  justify-content: flex-end;
+  align-items: flex-end;
+  width: 50%;
+  padding-right: 10px;
+  padding-left: 25px;
+  margin-left: 10px;
+  font-size: 1rem;
+  color: #fdffe6;
+  text-shadow: 0 0 0.6rem #fdffe6, 0 0 1.5rem #eff88a,
+  -0.2rem 0.1rem 1rem #eff88a, 0.2rem 0.1rem 1rem #eff88a,
+  0 -0.5rem 2rem #eafc27, 0 0.5rem 3rem #e8fa28;
+  animation: shine-arrow 2s forwards, flicker 3s infinite;
+  text-align: left;
+}
+
+.attention {
+  color: #fdffe6;
+  text-shadow: 0 0 0.6rem #fdffe6, 0 0 1.5rem #eff88a,
+  -0.2rem 0.1rem 1rem #eff88a, 0.2rem 0.1rem 1rem #eff88a,
+  0 -0.5rem 2rem #eafc27, 0 0.5rem 3rem #e8fa28;
+  animation: shine-arrow 2s forwards, flicker 3s infinite;
 }
 
 .mt-5 {
@@ -323,6 +352,12 @@ nav {
   padding-top: 60%;
   color: #ffe6ff;
   position: relative;
+}
+
+.form-header-container {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
 }
 
 .form-box-ls {

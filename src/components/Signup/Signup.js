@@ -161,68 +161,76 @@ class Signup extends React.Component {
             <>
                 <div className="container">
                     <div className="form-box-ls center">
-                        <form className="main-form" onSubmit={this.handleRegistrationSubmit}>
-                            <div role='alert'>
-                                {error && <p className='error text-right'>{error}</p>}
-                            </div>
-                            <h1>Sign up</h1>
-
-                            <input
-                                placeholder="Enter user name"
-                                type="text"
-                                name="user_name"
-                                id="user_name"
-                                className="text-input"
-                                maxlength="25"
-                                onBlur={this.handleUserNameError}
-                                required
-                            />
-                            {userNameError && <p className='error text-right'>{userNameError}</p>}
-                            <input
-                                placeholder="Enter email"
-                                type="text"
-                                name="email"
-                                id="email"
-                                className="text-input"
-                                maxlength="25"
-                                onBlur={this.handleEmailError}
-                                required
-                            />
-                            {emailError && <p className='error text-right'>{emailError}</p>}
-                            <input
-                                type="password"
-                                name="password"
-                                id="password"
-                                placeholder="Enter password"
-                                className="text-input"
-                                maxlength="35"
-                                onBlur={this.handlePasswordError}
-                                ref={this.password}
-                                required
-                            />
-                            {passwordError && <p className='error text-right'>{passwordError}</p>}
-
-                            <input
-                                type="password"
-                                name="repeat_password"
-                                id="repeat_password"
-                                placeholder="Confirm password"
-                                className="text-input"
-                                maxlength="35"
-                                onBlur={this.handleRepeatPasswordError}
-                                required
-                            />
-                            {repeatPasswordError && <p className='error text-right'>{repeatPasswordError}</p>}
-
-                            <div className="form-button-container">
-                                <button type="submit" className="item-btn">Register</button>
-                            </div>
-
-                        </form>
                         <div className="login-box center">
+                            <form className="main-form" onSubmit={this.handleRegistrationSubmit}>
+
+                                <div className="form-header-container">
+                                    
+                                        {error && <p className='alert error'>{error}</p>}
+
+                                    <h1>Sign up</h1>
+                                </div>
+
+
+                                <input
+                                    placeholder="Enter user name"
+                                    type="text"
+                                    name="user_name"
+                                    id="user_name"
+                                    className="text-input"
+                                    maxlength="25"
+                                    onBlur={this.handleUserNameError}
+                                    required
+                                />
+                                {userNameError && <p className='error text-right'>{userNameError}</p>}
+                                <input
+                                    placeholder="Enter email"
+                                    type="text"
+                                    name="email"
+                                    id="email"
+                                    className="text-input"
+                                    maxlength="25"
+                                    onBlur={this.handleEmailError}
+                                    required
+                                />
+                                {emailError && <p className='error text-right'>{emailError}</p>}
+                                <input
+                                    type="password"
+                                    name="password"
+                                    id="password"
+                                    placeholder="Enter password"
+                                    className="text-input"
+                                    maxlength="35"
+                                    onBlur={this.handlePasswordError}
+                                    ref={this.password}
+                                    required
+                                />
+                                {passwordError && <p className='error text-right'>{passwordError}</p>}
+
+                                <input
+                                    type="password"
+                                    name="repeat_password"
+                                    id="repeat_password"
+                                    placeholder="Confirm password"
+                                    className="text-input"
+                                    maxlength="35"
+                                    onBlur={this.handleRepeatPasswordError}
+                                    required
+                                />
+                                {repeatPasswordError && <p className='error text-right'>{repeatPasswordError}</p>}
+
+                                <div className="form-button-container">
+                                    <button type="submit" className="item-btn">Register</button>
+                                </div>
+
+                            </form>
+
                             <p>Already have an account? {' '}
                                 <span className="landing-link" onClick={this.toggleLanding}>Log in!</span>
                             </p>
+
+
+
                         </div>
                     </div>
                 </div>
