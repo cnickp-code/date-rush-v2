@@ -13,6 +13,7 @@ class Home extends React.Component {
         this.context.toggleBuildBool(true);
         this.context.handleSetLocation(null, null);
         this.context.handleSetShowNext(false);
+        this.context.handleReset();
     }
 
     render() {

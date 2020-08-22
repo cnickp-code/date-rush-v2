@@ -26,6 +26,8 @@ export class DRContextProvider extends React.Component {
             myDates: null,
             summaryDate: null,
             summaryBool: false,
+            logoutBool: false,
+            saveBool: false,
 
             location: null,
             dateType: null,
@@ -47,6 +49,40 @@ export class DRContextProvider extends React.Component {
                 user_name: jwtPayload.sub
             }
         }
+    }
+
+    handleAddProfileDates = (item) => {
+        let newDates = [...this.state.myDates, item]
+
+        this.setState({
+            myDates: newDates
+        })
+    }
+
+    handleReset = () => {
+        this.setState({
+            location: null,
+            dateType: null,
+            mealType: null,
+            showType: null,
+            show: null,
+            activity: null,
+            meal: null,
+            restaurant: null,
+            drink: null,
+        })
+    }
+
+    toggleSaveBool = () => {
+        this.setState({
+            saveBool: !this.state.saveBool
+        })
+    }
+
+    toggleLogoutBool = () => {
+        this.setState({
+            logoutBool: !this.state.logoutBool
+        })
     }
 
     handleSetSummaryDate = (date) => {
@@ -383,6 +419,10 @@ export class DRContextProvider extends React.Component {
             handleSetMealType: this.handleSetMealType,
             handleSetSummaryBool: this.handleSetSummaryBool,
             handleSetSummaryDate: this.handleSetSummaryDate,
+            toggleLogoutBool: this.toggleLogoutBool,
+            toggleSaveBool: this.toggleSaveBool,
+            handleReset: this.handleReset,
+            handleAddProfileDates: this.handleAddProfileDates
         }
 
         return (

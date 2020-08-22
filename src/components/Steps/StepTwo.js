@@ -5,7 +5,7 @@ import DRContext from '../../context/DRContext';
 const StepTwo = () => {
 
     const [type, setDateType] = useState(null);
-    const { handleSetStep, handleSetDateType, handleSetShowNext, handleSetMeal } = useContext(DRContext);
+    const { handleSetStep, handleSetDateType, handleSetShowNext, handleSetMeal, handleSetMealType } = useContext(DRContext);
 
     const replaceInButton = () => {
         setDateType(null);
@@ -13,6 +13,7 @@ const StepTwo = () => {
             setDateType('In');
         }, 400);
         handleSetDateType('In')
+        handleSetMealType('In')
         handleSetShowNext(true);
         handleSetMeal('In')
     }
@@ -23,6 +24,7 @@ const StepTwo = () => {
             setDateType('Out');
         }, 400);
         handleSetDateType('Out')
+        handleSetMealType('Out')
         handleSetShowNext(true);
         handleSetMeal('Out')
     }

@@ -25,18 +25,6 @@ const StepThree = () => {
         handleSetDrink('NA');
     }
 
-    const handlePreviousStep = () => {
-        document.body.classList.remove('body-pos-step3');
-        document.body.classList.add('body-pos-step2');
-        handleSetStep(2);
-    }
-
-    const handleNextStep = () => {
-        document.body.classList.remove('body-pos-step3');
-        document.body.classList.add('body-pos-step4');
-        handleSetStep(4);
-    }
-
     return (
         <div className="step3-container">
             <div className="border2">

@@ -36,13 +36,26 @@ class Results extends React.Component {
         })
     }
 
+    handleShowSaveOverlay = () => {
+        this.context.toggleSaveBool();
+        document.documentElement.style.overflow = 'hidden';
+        document.body.scroll = 'no';
+    }
+
+    handleGoBack = () => {
+        this.context.handleSetStep(6);
+        this.context.handleSetSummaryBool(false);
+    }
 
     render() {
         let header = <h1 className="results-header text-center mb-10">Your Date!</h1>
 
-        if(this.context.summaryBool) {
+        if (this.context.summaryBool) {
             header = <h1 className="results-header text-center mb-10">{this.context.summaryDate.name}</h1>
         }
+
+        console.log(this.state.type);
+        console.log(this.context.mealType);
 
         return (
             <div className="results-container">
@@ -53,9 +66,14 @@ class Results extends React.Component {
                         <p className="fs-xs color-p"><i>Click the buttons to show each category</i></p>
                     </div>
                     {!this.context.summaryBool &&
-                    <div className="right-results-container">
-                        <button className="item-btn">Save Date</button>
-                    </div>}
+                        <div className="right-results-container">
+                            <button className="item-btn" onClick={this.handleShowSaveOverlay}>Save Date</button>
+                        </div>}
+                    {this.context.summaryBool &&
+                        <div className="right-results-container">
+                            <button className="item-btn" onClick={this.handleGoBack}>Go Back</button>
+                        </div>
+                    }
                 </div>
 
                 <div className="results-buttons mt-20">
@@ -64,9 +82,9 @@ class Results extends React.Component {
                     <button className="item-btn3" onClick={this.setTypeDrink}><i className="fas fa-cocktail home-step-icon"></i></button>
                     <button className="item-btn3" onClick={this.setTypeShow}><i className="fas fa-tv home-step-icon"></i></button>
                 </div>
-                {(this.state.type === 'Activity') && <ActivityItem activity={this.context.activity}/>}
-                {(this.state.type === 'Meal') && (this.context.mealType === 'In') && <MealItem meal={this.context.meal}/>}
-                {(this.state.type === 'Meal') && (this.context.mealType === 'Out') && <RestaurantItem restaurant={this.context.restaurant}/>}
+                {(this.state.type === 'Activity') && <ActivityItem activity={this.context.activity} />}
+                {(this.state.type === 'Meal') && (this.context.mealType === 'In') && <MealItem meal={this.context.meal} />}
+                {(this.state.type === 'Meal') && (this.context.mealType === 'Out') && <RestaurantItem restaurant={this.context.restaurant} />}
                 {(this.state.type === 'Drink') && <Drinkitem drink={this.context.drink} />}
                 {(this.state.type === 'Show') && <ShowItem movieBool={this.context.movieBool} show={this.context.show} />}
             </div>

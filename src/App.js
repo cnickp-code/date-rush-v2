@@ -11,6 +11,8 @@ import StepFour from './components/Steps/StepFour';
 import Results from './components/Results/Results';
 import Profile from './components/Profile/Profile';
 import BalloonButton from './components/BalloonButton/BalloonButton';
+import LogoutOverlay from './components/Overlays/LogoutOverlay';
+import SaveDateOverlay from './components/Overlays/SaveDateOverlay';
 
 import DateRushApiService from './services/dr-api-service';
 import ExtApiService from './services/external-api-service';
@@ -74,7 +76,9 @@ class App extends React.Component {
     return (
       <div className="App">
         <main>
-          
+          {this.context.saveBool && <SaveDateOverlay />}
+          {this.context.logoutBool && <LogoutOverlay />}
+
           {tokenBool && <div><Header /></div>}
 
           {tokenBool && (this.context.step === 6) && <Profile />}
