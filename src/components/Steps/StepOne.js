@@ -82,7 +82,7 @@ const StepOne = () => {
         let service = new google.maps.places.PlacesService(map);
         let request = {
             location: new google.maps.LatLng(latLng.lat, latLng.lng),
-            radius: 30000,
+            radius: 10000,
             type: ['tourist_attraction'],
             openNow: true,
             // [

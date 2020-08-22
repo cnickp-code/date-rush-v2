@@ -78,7 +78,7 @@ export class DRContextProvider extends React.Component {
     }
 
     setCafes = (cafes) => {
-        let newCafes = cafes.filter(cafe => cafe.name !== `McDonald's`)
+        let newCafes = cafes.filter(cafe => (cafe.name !== `McDonald's`) && (cafe.name !== `Krispy Kreme`))
 
         this.setState({
             cafes: newCafes

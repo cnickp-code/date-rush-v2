@@ -25,6 +25,7 @@ class Home extends React.Component {
                 <div className="home-body">
                     <h3>Feeling lucky?</h3>
                     <p className="mt-10">Use the Date Generator to generate a full date on the fly through four easy steps!</p>
+                    <p className="mt-10 fs-xs"><i>Results based on default 10km radius.</i></p>
                     <button className="item-btn2 mt-20 mb-20" onClick={this.handleNextStep}>Get Started!</button>
                     
                     <h3>See your saved dates!</h3>

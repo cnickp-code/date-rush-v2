@@ -464,6 +464,17 @@ nav {
   animation: shine 2s forwards, flicker 3s infinite;
 }
 
+/* .bb-arrow {
+  font-size: 50px;
+  color: #fdffe6;
+  transition: all 0.5s ease;
+  cursor: pointer;
+  text-shadow: 0 0 0.6rem #fdffe6, 0 0 1.5rem #eff88a,
+  -0.2rem 0.1rem 1rem #eff88a, 0.2rem 0.1rem 1rem #eff88a,
+  0 -0.5rem 2rem #eafc27, 0 0.5rem 3rem #e8fa28;
+  animation: shine-arrow 2s forwards, flicker 3s infinite;
+} */
+
 /* STEP STYLES */
 
 #home-form {
@@ -909,6 +920,20 @@ nav {
       0 -0.5rem 2rem #ff2483, 0 0.5rem 3rem #ff2483;
   }
 }
+
+@keyframes shine-arrow {
+  0% {
+    color: #7e8620;
+    text-shadow: none;
+  }
+  100% {
+    color: #fdffe6;
+    text-shadow: 0 0 0.6rem #fdffe6, 0 0 1.5rem #eff88a,
+    -0.2rem 0.1rem 1rem #eff88a, 0.2rem 0.1rem 1rem #eff88a,
+    0 -0.5rem 2rem #eafc27, 0 0.5rem 3rem #e8fa28;
+  }
+}
+
 
 @keyframes shine-btn {
   0% {
