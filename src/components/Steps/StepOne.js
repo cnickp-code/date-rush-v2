@@ -230,7 +230,7 @@ const StepOne = () => {
 
                     {locBool && 
                     <>
-                        <p className="fs-xs text-center"><i>Using Current Location</i></p>
+                        <p className="fs-xs text-center mt-10"><i>Using Current Location</i></p>
                         <p className="fs-xs text-center"><i>{address}</i></p>
                     </>}
 

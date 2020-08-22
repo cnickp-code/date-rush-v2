@@ -49,6 +49,7 @@ const StepThree = () => {
                     {(type === 'NA') && <button className="item-btn4-selected mt-10 pad-5">No</button>}
                     {!(type === 'NA') && <button className="item-btn4 mt-10 pad-5" onClick={replaceNAButton}>No</button>}
                 </div>
+                <p className="fs-xs text-center mt-10"><i>Make a selection to continue</i></p>
                 {/* <div className="step-button-container2 mt-20">
                     <button className="item-btn" onClick={handlePreviousStep}>Prev</button>
                     <button className="item-btn" onClick={handleNextStep}>Next</button>
