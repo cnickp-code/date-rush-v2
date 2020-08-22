@@ -20,7 +20,9 @@ const ProfileItem = (props) => {
         handleSetShowType,
         handleSetMealType,
         handleSetSummaryDate,
-        handleSetSummaryBool
+        handleSetSummaryBool,
+        handleSetSummaryDrinkPlace,
+        handleSetDrinkTypeOnly
     } = useContext(DRContext);
 
     const handleSummary = () => {
@@ -29,7 +31,11 @@ const ProfileItem = (props) => {
         handleSetSummaryBool(true);
         handleSetSummaryDate(date);
         handleSetOnlyLocation(date.location);
-        initMap();
+        initMap(props.date.place_id);
+        handleSetDrinkTypeOnly(date.drink_type);
+        console.log('>>>>>>>>>>>>>>>>>>>>>>>>>>>>')
+        console.log('DATE DRINK TYPE: ', date.drink_type);
+        console.log('DATE DRINK ID: ', date.drink_id);
 
         if (props.date.meal_type === 'In') {
             ExtApiService.getMealById(Number(props.date.meal_id))
@@ -37,18 +43,27 @@ const ProfileItem = (props) => {
                     handleSetMealType('In')
                     handleSetSummaryMeal(results.meals[0])
                 })
+            ExtApiService.getDrinkById(Number(props.date.drink_id))
+                .then(results => {
+                    handleSetSummaryDrink(results.drinks[0])
+                })
         } else if (props.date.meal_type === 'Out') {
             ExtApiService.getRestaurantById(props.date.meal_id)
                 .then(restaurant => {
                     handleSetMealType('Out')
                     handleSetSummaryRestaurant(restaurant)
                 })
+
+            if(props.date.drink_type === 'Alc') {
+                initMapDrink(props.date.drink_id);
+                handleSetDrinkTypeOnly('Alc');
+            } else if(props.date.drink_type === 'NA') {
+                initMapDrink(props.date.drink_id);
+                handleSetDrinkTypeOnly('NA');
+            }
         }
 
-        ExtApiService.getDrinkById(Number(props.date.drink_id))
-            .then(results => {
-                handleSetSummaryDrink(results.drinks[0])
-            })
+
 
         if (props.date.show_type === 'Movie') {
             ExtApiService.getMovieById(props.date.show_id)
@@ -65,7 +80,7 @@ const ProfileItem = (props) => {
                     handleSetSummaryShow(newShow);
                     handleSetShowType('Movie');
                 })
-        } else if(props.date.show_type === 'TV') {
+        } else if (props.date.show_type === 'TV') {
             ExtApiService.getTvShowById(props.date.show_id)
                 .then(show => {
                     let genre_ids = [];
@@ -90,14 +105,14 @@ const ProfileItem = (props) => {
 
     }
 
-    const initMap = () => {
+    const initMap = (id) => {
         let map = new google.maps.Map(document.getElementById('map'), {
             center: { lat: 43.653225, lng: -79.383186 },
             zoom: 15
         });
         let service = new google.maps.places.PlacesService(map);
         let request = {
-            placeId: props.date.place_id
+            placeId: id
         }
 
         let placeObj = {};
@@ -130,16 +145,56 @@ const ProfileItem = (props) => {
         })
     }
 
+    const initMapDrink = (id) => {
+        let map = new google.maps.Map(document.getElementById('map'), {
+            center: { lat: 43.653225, lng: -79.383186 },
+            zoom: 15
+        });
+        let service = new google.maps.places.PlacesService(map);
+        let request = {
+            placeId: id
+        }
+
+        let placeObj = {};
+
+        service.getDetails(request, function (results, status, pagetoken) {
+            console.log(results);
+            let latNum = results.geometry.location.lat();
+            let lngNum = results.geometry.location.lng();
+            let locationObj = { lat: latNum, lng: lngNum };
+            let placeOpen = true;
+            let placeRating = results.rating;
+            let photoUrl = 'https://img.favpng.com/15/13/2/urban-park-cartoon-png-favpng-GyXzR7iKQadY6M60ED5b38UwK.jpg';
+            if (results.photos && results.photos.length > 0) {
+                photoUrl = results.photos[0].getUrl({ maxHeight: 250 });
+            }
+
+
+            placeObj = {
+                id: results.place_id,
+                name: results.name,
+                photoUrl,
+                types: results.types,
+                location: locationObj,
+                address: results.vicinity,
+                isOpen: placeOpen,
+                rating: placeRating
+            }
+
+            handleSetSummaryDrinkPlace(placeObj);
+        })
+    }
+
     return (
         <>
-        <div className="pi-container">
-            <h3 className="pi-title" onClick={handleSummary}>{props.date.name}</h3>
-            <div className="pi-delete" onClick={handleDeleteItem}>
-                <i className="fs-xl fas fa-trash-alt trash"></i>
+            <div className="pi-container">
+                <h3 className="pi-title" onClick={handleSummary}>{props.date.name}</h3>
+                <div className="pi-delete" onClick={handleDeleteItem}>
+                    <i className="fs-xl fas fa-trash-alt trash"></i>
+                </div>
+
             </div>
-            
-        </div>
-        <div id='map'></div>
+            <div id='map'></div>
         </>
     )
 }

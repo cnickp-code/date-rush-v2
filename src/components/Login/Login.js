@@ -14,6 +14,8 @@ class Login extends React.Component {
     onLoginSuccess = () => {
         document.body.classList.add('body-pos-home');
         this.context.toggleIntro(false);
+        this.context.handleReset();
+        this.context.handleSetStep(0);
     }
     
     handleSubmit = event => {

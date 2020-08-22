@@ -5,7 +5,7 @@ import DRContext from '../../context/DRContext';
 const StepThree = () => {
 
     const [type, setDrinkType] = useState(null);
-    const { handleSetStep, handleSetShowNext, handleSetDrink } = useContext(DRContext);
+    const { dateType, handleSetShowNext, handleSetDrink, handleSetDrinkPlace } = useContext(DRContext);
 
     const replaceAlcButton = () => {
         setDrinkType(null);
@@ -13,7 +13,12 @@ const StepThree = () => {
             setDrinkType('Alc');
         }, 400);
         handleSetShowNext(true)
-        handleSetDrink('Alc');
+        
+        if(dateType === 'Out') {
+            handleSetDrinkPlace('Alc')
+        } else if(dateType === 'In') {
+            handleSetDrink('Alc');
+        }
     }
 
     const replaceNAButton = () => {
@@ -22,7 +27,12 @@ const StepThree = () => {
             setDrinkType('NA');
         }, 400);
         handleSetShowNext(true);
-        handleSetDrink('NA');
+        
+        if(dateType === 'Out') {
+            handleSetDrinkPlace('NA')
+        } else if(dateType === 'In') {
+            handleSetDrink('NA');
+        }
     }
 
     return (

@@ -16,6 +16,8 @@ export class DRContextProvider extends React.Component {
             intro: true,
             latLng: null,
             places: [],
+            cafes: [],
+            bars: [],
             restaurants: [],
             step: 0,
             buildBool: false,
@@ -23,7 +25,7 @@ export class DRContextProvider extends React.Component {
             movieBool: null,
             movieGenres: null,
             tvGenres: null,
-            myDates: null,
+            myDates: [],
             summaryDate: null,
             summaryBool: false,
             logoutBool: false,
@@ -38,6 +40,9 @@ export class DRContextProvider extends React.Component {
             meal: null,
             restaurant: null,
             drink: null,
+            drinkType: null,
+            cafe: null,
+            bar: null,
         }
 
         const jwtPayload = TokenService.parseAuthToken()
@@ -51,6 +56,41 @@ export class DRContextProvider extends React.Component {
         }
     }
 
+    handleSetDrinkPlace = (type) => {
+        if(type === 'Alc') {
+            const randIndex = Math.floor(Math.random() * Math.floor(this.state.bars.length - 1));
+            const bar = this.state.bars[randIndex];
+
+            this.setState({
+                drinkType: type,
+                bar
+            })
+        } else if(type === 'NA') {
+            const randIndex = Math.floor(Math.random() * Math.floor(this.state.cafes.length - 1));
+            const cafe = this.state.cafes[randIndex];
+
+            this.setState({
+                drinkType: type,
+                cafe
+            })
+        }
+
+    }
+
+    setCafes = (cafes) => {
+        let newCafes = cafes.filter(cafe => cafe.name !== `McDonald's`)
+
+        this.setState({
+            cafes: newCafes
+        })
+    }
+
+    setBars = (bars) => {
+        this.setState({
+            bars
+        })
+    }
+    
     handleAddProfileDates = (item) => {
         let newDates = [...this.state.myDates, item]
 
@@ -269,6 +309,7 @@ export class DRContextProvider extends React.Component {
         .then(drinks => {
             if(drinks.drinks[0].strAlcoholic === 'Non alcoholic') {
                 this.setState({
+                    drinkType: 'NA',
                     drink: drinks.drinks[0],
                 })
             } else {
@@ -282,6 +323,7 @@ export class DRContextProvider extends React.Component {
         .then(drinks => {
             if(drinks.drinks[0].strAlcoholic === 'Alcoholic') {
                 this.setState({
+                    drinkType: 'Alc',
                     drink: drinks.drinks[0],
                 })
             } else {
@@ -319,6 +361,12 @@ export class DRContextProvider extends React.Component {
     handleSetMealType = (type) => {
         this.setState({
             mealType: type
+        })
+    }
+
+    handleSetDrinkTypeOnly = (type) => {
+        this.setState({
+            drinkType: type
         })
     }
 
@@ -389,6 +437,12 @@ export class DRContextProvider extends React.Component {
         })
     }
 
+    handleSetSummaryDrinkPlace = (place) => {
+        this.setState({
+            drink: place
+        })
+    }
+
     handleSetRandomActivity = () => {
         const randIndex = Math.floor(Math.random() * Math.floor(this.state.places.length - 1));
         const activity = this.state.places[randIndex];
@@ -438,7 +492,13 @@ export class DRContextProvider extends React.Component {
             toggleLogoutBool: this.toggleLogoutBool,
             toggleSaveBool: this.toggleSaveBool,
             handleReset: this.handleReset,
-            handleAddProfileDates: this.handleAddProfileDates
+            handleAddProfileDates: this.handleAddProfileDates,
+            setCafes: this.setCafes,
+            setBars: this.setBars,
+            handleSetDrinkPlace: this.handleSetDrinkPlace,
+            handleSetDrinkTypeOnly: this.handleSetDrinkTypeOnly,
+            handleSetSummaryDrinkPlace: this.handleSetSummaryDrinkPlace
+            
         }
 
         return (

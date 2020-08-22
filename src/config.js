@@ -1,5 +1,6 @@
 export default {
     MAIN_API_ENDPOINT: 'https://fierce-castle-98496.herokuapp.com/api',
+    // MAIN_API_ENDPOINT: 'http://localhost:8000/api',
     MEAL_API_ENDPOINT: 'https://www.themealdb.com/api/json/v1/',
     DRINK_API_ENDPOINT: 'https://www.thecocktaildb.com/api/json/v1',
     PLACES_API_ENDPOINT: 'https://cors-anywhere.herokuapp.com/https://maps.googleapis.com/maps/api/place/nearbysearch/json',
