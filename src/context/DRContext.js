@@ -113,17 +113,17 @@ export class DRContextProvider extends React.Component {
         })
     }
 
-    toggleSaveBool = () => {
+    toggleSaveBool = (bool) => {
         this.setState({
             logoutBool: false,
-            saveBool: !this.state.saveBool
+            saveBool: bool
         })
     }
 
-    toggleLogoutBool = () => {
+    toggleLogoutBool = (bool) => {
         this.setState({
             saveBool: false,
-            logoutBool: !this.state.logoutBool
+            logoutBool: bool
         })
     }
 

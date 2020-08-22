@@ -37,7 +37,7 @@ class Results extends React.Component {
     }
 
     handleShowSaveOverlay = () => {
-        this.context.toggleSaveBool();
+        this.context.toggleSaveBool(true);
         document.documentElement.style.overflow = 'hidden';
         document.body.scroll = 'no';
     }

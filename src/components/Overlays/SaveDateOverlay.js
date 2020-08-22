@@ -22,12 +22,12 @@ class SaveDateOverlay extends React.Component {
 
         if (this.context.dateType === 'Out') {
             meal_id = this.context.restaurant.id;
-            if(this.context.drinkType === 'Alc') {
+            if (this.context.drinkType === 'Alc') {
                 drink_id = this.context.bar.id;
-            } else if(this.context.drinkType === 'NA') {
+            } else if (this.context.drinkType === 'NA') {
                 drink_id = this.context.cafe.id;
             }
-            
+
         } else {
             meal_id = this.context.meal.idMeal;
             drink_id = this.context.drink.idDrink;
@@ -53,13 +53,13 @@ class SaveDateOverlay extends React.Component {
                 this.context.handleSetStep(6);
                 document.documentElement.style.overflow = 'scroll';
                 document.body.scroll = 'yes';
-                this.context.toggleSaveBool();
+                this.context.toggleSaveBool(false);
             })
 
     }
 
     closeOverlay = () => {
-        this.context.toggleSaveBool();
+        this.context.toggleSaveBool(false);
         document.documentElement.style.overflow = 'scroll';
         document.body.scroll = 'yes';
     }
@@ -68,15 +68,13 @@ class SaveDateOverlay extends React.Component {
         return (
             <div className="overlay-container">
                 <div className="sd-modal">
-                    <div className="exit" onClick={this.closeOverlay}>
-                        <i class="far fa-times-circle"></i>
-                    </div>
                     <form id="name-submit" onSubmit={this.handleSubmit}>
                         <h1 className="item-header text-center">Name Your Date</h1>
-                        <input id="name" className="sd-text" placeholder="Type name here" onChange={this.handleInputChange} />
-                        <p className="text-center">
+                        <input id="name" className="sd-text" placeholder="Type name here" onChange={this.handleInputChange} required />
+                        <div className="save-btn-container">
                             <button type="submit" className="item-btn2">Save</button>
-                        </p>
+                            <button className="item-btn2" onClick={this.closeOverlay}>Cancel</button>
+                        </div>
                     </form>
                 </div>
             </div>

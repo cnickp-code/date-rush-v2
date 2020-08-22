@@ -33,8 +33,7 @@ class Header extends React.Component {
     }
 
     handleLogout = () => {
-        this.context.toggleLogoutBool();
-        console.log('SHOULD TOGGLE LOGOUT')
+        this.context.toggleLogoutBool(true);
         document.documentElement.style.overflow = 'hidden';
         document.body.scroll = 'no';
     }

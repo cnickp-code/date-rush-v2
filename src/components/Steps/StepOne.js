@@ -3,6 +3,7 @@ import { useContext, useState, useEffect } from 'react';
 import DRContext from '../../context/DRContext';
 import config from '../../config';
 import mapStyles from '../../services/map-style';
+import ExtApiService from '../../services/external-api-service';
 
 import {
     GoogleMap,
@@ -48,8 +49,9 @@ const google = window.google = window.google ? window.google : {};
 
 const StepOne = () => {
 
-    const { handleSetLocation, handleSetPlaces, handleSetStep, handleSetShowNext } = useContext(DRContext);
+    const { handleSetLocation, handleSetPlaces, handleSetShowNext } = useContext(DRContext);
     const [address, setAddress] = useState(null);
+    const [locBool, setLocBool] = useState(false);
     const [latLng, setLatLng] = useState({});
 
 
@@ -145,12 +147,6 @@ const StepOne = () => {
         initMap();
     }
 
-    const handleNextStep = () => {
-        document.body.classList.remove('body-pos-home');
-        document.body.classList.add('body-pos-step2');
-        handleSetStep(2);
-    }
-
     const mapRef = React.useRef();
     const onMapLoad = React.useCallback((map) => {
         mapRef.current = map;
@@ -163,9 +159,21 @@ const StepOne = () => {
                 <div className="s1-top-container">
                     <div className="s1-left">
                         <h5 >Set a location</h5>
-                        <p className="mb-10 fs-xs"><i>Must set location to continue.</i></p>
+                        <p className="mb-10 fs-xs"><i>Enter an address or click the compass to use your current location. Must set location to continue.</i></p>
                     </div>
-                    {/* <div className="compass"></div> */}
+                    <div className="compass" onClick={() => {
+                        navigator.geolocation.getCurrentPosition((position) => {
+                            let locationObj = { lat: position.coords.latitude, lng: position.coords.longitude };
+                            let latLngStr = `${position.coords.latitude},${position.coords.longitude}`
+                            setLatLng(locationObj);
+                            ExtApiService.getLocationName(latLngStr)
+                                .then(result => {
+                                    setLocBool(true)
+                                    setAddress(result.results[1].formatted_address);
+                                })
+                        }
+                            , () => null)
+                    }}></div>
                 </div>
 
                 <form id="home-form" onSubmit={handleSubmit}>
@@ -182,7 +190,7 @@ const StepOne = () => {
 
                                     setLatLng(latLngObj);
                                     setAddress(address);
-                            
+
                                 } catch (e) {
                                     console.log('error!')
                                 }
@@ -192,6 +200,7 @@ const StepOne = () => {
                                 value={value}
                                 onChange={(e) => {
                                     setValue(e.target.value)
+                                    setLocBool(false)
                                 }}
                                 disabled={!ready}
                                 placeholder='Enter a city'
@@ -218,6 +227,12 @@ const StepOne = () => {
 
                         </GoogleMap>
                     </div>
+
+                    {locBool && 
+                    <>
+                        <p className="fs-xs text-center"><i>Using Current Location</i></p>
+                        <p className="fs-xs text-center"><i>{address}</i></p>
+                    </>}
 
                     <div className="flex-center">
                         <button type="submit" className="item-btn mt-10 pad-5 center">Set Location</button>

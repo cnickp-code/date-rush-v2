@@ -16,11 +16,11 @@ class LogoutOverlay extends React.Component {
         document.body.classList.add('body-pos-landing');
         document.documentElement.style.overflow = 'scroll';
         document.body.scroll = 'yes';
-        this.context.toggleLogoutBool();
+        this.context.toggleLogoutBool(false);
     }
 
     closeOverlay = () => {
-        this.context.toggleLogoutBool();
+        this.context.toggleLogoutBool(false);
         document.documentElement.style.overflow = 'scroll';
         document.body.scroll = 'yes';
     }
