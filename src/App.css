@@ -435,7 +435,7 @@ nav {
   flex-direction: column;
   justify-content: flex-end;
   position: relative;
-  bottom: 30%;
+  bottom: 45%;
 }
 
 .bb-img {
@@ -1049,6 +1049,122 @@ nav {
     animation: shine 2s forwards, flicker 3s infinite;
   }
 }
+
+@media screen and (min-width: 900px) {
+  body {
+    background-size: 160% 220%;
+  }
+
+  .main-step-container {
+    margin-left: 100px;
+  }
+
+  .main-container {
+    max-width: 600px;
+    
+  }
+
+  .results-container {
+    padding-top: 3%;
+  }
+
+  .results-buttons {
+    max-width: 600px;
+    margin-left: auto;
+    margin-right: auto;
+  }
+
+  .upper-results {
+    max-width: 600px;
+    margin-left: auto;
+    margin-right: auto;
+  }
+
+  .sd-text {
+    max-width: 350px;
+    position: relative;
+    left: calc(50% - 175px);
+  }
+  
+  #name-submit {
+    width: 80%;
+    margin-left: auto;
+    margin-right: auto;
+  }
+  .profile-main-container {
+    max-width: 600px;
+  }
+}
+
+@media screen and (min-width: 1400px) {
+  body {
+    background-size: 120% 220%;
+  }
+
+  .main-step-container {
+    margin-left: 250px;
+  }
+
+  .step-container {
+    width: 80%;
+    height: 100%;
+    padding: 20px;
+    padding-right: 5px;
+    /* padding-top: 26vh; */
+    padding-top: 12rem;
+    color: #ffe6ff;
+  }
+  
+  .step2-container {
+    width: 80%;
+    height: 100%;
+    padding: 20px;
+    padding-top: 12rem;
+    color: #ffe6ff;
+  }
+  
+  .step3-container {
+    width: 80%;
+    height: 100%;
+    padding: 20px;
+    padding-top: 12rem;
+    color: #ffe6ff;
+  }
+  
+  .step4-container {
+    width: 80%;
+    height: 100%;
+    padding: 20px;
+    padding-top: 12rem;
+    color: #ffe6ff;
+  }
+}
+
+@media screen and (min-width: 1600px) {
+  .step-container {
+    padding-top: 16rem;
+  }
+  
+  .step2-container {
+    padding-top: 16rem;
+  }
+  
+  .step3-container {
+    padding-top: 16rem;
+
+  }
+  
+  .step4-container {
+    padding-top: 16rem;
+
+  }
+}
+
+/* @media screen and (min-height: 1100px) {
+  body {
+    background-size: 100% 100%;
+  }
+} */
 
 /* @media screen and (max-height: 600px) {
   body {
