@@ -504,16 +504,34 @@ nav {
   animation: shine 2s forwards, flicker 3s infinite;
 } */
 
-.bb-arrow {
-  font-size: 50px;
+/* .bb-arrow {
+  
   color: #fdffe6;
-  /* transition: all 0.5s ease; */
   cursor: pointer;
   text-shadow: 0 0 0.6rem #fdffe6, 0 0 1.5rem #eff88a,
   -0.2rem 0.1rem 1rem #eff88a, 0.2rem 0.1rem 1rem #eff88a,
   0 -0.5rem 2rem #eafc27, 0 0.5rem 3rem #e8fa28;
   animation: shine-arrow 2s forwards, flicker 3s infinite;
+} */
+
+
+.bb-arrow {
+  font-size: 50px;
+  color: #e6f6ff;
+  cursor: pointer;
+  text-shadow: 0 0 0.6rem #e6f6ff, 0 0 1.5rem #305dbd,
+  -0.2rem 0.1rem 1rem #305dbd, 0.2rem 0.1rem 1rem #305dbd,
+  0 -0.5rem 2rem #1724da, 0 0.5rem 3rem #1724da;
+  /* animation: shine-btn2 2s forwards, flicker 3s infinite; */
 }
+
+/* .bb-arrow {
+  color: #e6f6ff;
+  text-shadow: 0 0 0.6rem #e6f6ff, 0 0 1.5rem #3a75f5,
+  -0.2rem 0.1rem 1rem #3a75f5, 0.2rem 0.1rem 1rem #3a75f5,
+  0 -0.5rem 2rem #2433ff, 0 0.5rem 3rem #2433ff;
+
+} */
 
 /* STEP STYLES */
 
@@ -975,6 +993,8 @@ nav {
 }
 
 
+
+
 @keyframes shine-btn {
   0% {
     color: #6b1839;
@@ -991,6 +1011,25 @@ nav {
       0 -0.5rem 2rem #ff2483, 0 0.5rem 3rem #ff2483;
   }
 }
+
+@keyframes shine-btn2 {
+  0% {
+    color: #121a8b;
+    text-shadow: none;
+    box-shadow: none;
+    background-color: transparent;
+  }
+  100% {
+
+      color: #e6f6ff;
+      border-color: #2433ff;
+      text-shadow: 0 0 0.6rem #e6f6ff, 0 0 1.5rem #3a75f5,
+      -0.2rem 0.1rem 1rem #3a75f5, 0.2rem 0.1rem 1rem #3a75f5,
+      0 -0.5rem 2rem #2433ff, 0 0.5rem 3rem #2433ff;
+  }
+}
+
+
 
 @keyframes flicker {
   from {
@@ -1121,15 +1160,15 @@ nav {
 @media screen and (min-width: 768px) {
   .bb-arrow {
     font-size: 50px;
-    color: #ffe6ff;
+    color: #e6f6ff;
     /* transition: all 0.5s ease; */
     cursor: pointer;
   }
   
   .bb-arrow:hover {
-    text-shadow: 0 0 0.6rem #ffe6ff, 0 0 1.5rem #ff65bd,
-    -0.2rem 0.1rem 1rem #ff65bd, 0.2rem 0.1rem 1rem #ff65bd,
-    0 -0.5rem 2rem #ff2483, 0 0.5rem 3rem #ff2483;
+    text-shadow: 0 0 0.6rem #e6f6ff, 0 0 1.5rem #6596ff,
+    -0.2rem 0.1rem 1rem #6596ff, 0.2rem 0.1rem 1rem #6596ff,
+    0 -0.5rem 2rem #2433ff, 0 0.5rem 3rem #2433ff;
     animation: shine 2s forwards, flicker 3s infinite;
   }
 }
