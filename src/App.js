@@ -81,14 +81,28 @@ class App extends React.Component {
 
           {tokenBool && <div><Header /></div>}
 
-          {tokenBool && (this.context.step === 6) && <Profile />}
+          {tokenBool && (this.context.step === 6) &&
+            <>
+              <Spring
+                from={{ opacity: 0 }}
+                to={{ opacity: 1 }}
+                config={{ delay: 250, duration: 1000 }}
+              >
+                {props => (
+                  <div style={props} >
+                    <Profile />
+                  </div>
+                )}
+              </Spring>
+            </>
+          }
 
           {tokenBool && (this.context.step === 5) &&
             <>
               <Spring
                 from={{ opacity: 0 }}
                 to={{ opacity: 1 }}
-                config={{ delay: 1000, duration: 1000 }}
+                config={{ delay: 250, duration: 1000 }}
               >
                 {props => (
                   <div style={props} >
@@ -99,7 +113,7 @@ class App extends React.Component {
             </>
           }
 
-          {tokenBool &&
+          {tokenBool && !(this.context.step === 5 || this.context.step === 6) &&
             <div className="main-step-container">
               {tokenBool && (this.context.step === 4) && <StepFour />}
               {tokenBool && (this.context.step === 3) && <StepThree />}

@@ -433,25 +433,18 @@ nav {
   display: flex;
   flex-direction: column;
   justify-content: flex-end;
-  position: fixed;
-  bottom: 240px;
-  right: 20px;
+  position: relative;
+  bottom: 30%;
 }
 
 .bb-img {
   position: relative;
   height: 100px;
   width: auto;
-  z-index: -1;
-}
-
-.bb-invis {
-  width: 32px;
-  height: 50px;
 }
 
 .bb-float {
-  animation: float-away 3s ease-in 0.5s forwards;
+  animation: float-away 2s ease 0s forwards;
 }
 
 .bb-animation {
@@ -476,6 +469,7 @@ nav {
   display: flex;
   flex-direction: row;
   width: 85%;
+  max-width: 450px;
   height: 90vh;
   justify-content: space-between;
   position: relative;
@@ -881,10 +875,10 @@ nav {
 
 @keyframes float-away {
   0% {
-    top: -50px;
+    top: 0px;
   }
   100% {
-    top: -100vh;
+    top: -900px;
   }
 }
 
@@ -1060,8 +1054,45 @@ nav {
   }
 }
 
-@media screen and (max-height: 570px) {
+@media screen and (max-height: 600px) {
   body {
-    min-height: 565px;
+    min-height: 600px;
   }
 }
+
+/* @media screen and (min-height: 600px) {
+  body {
+    min-height: 600px;
+  }
+}
+@media screen and (min-height: 700px) {
+  body {
+    min-height: 700px;
+  }
+}
+@media screen and (min-height: 800px) {
+  body {
+    min-height: 800px;
+  }
+}
+@media screen and (min-height: 900px) {
+  body {
+    min-height: 900px;
+  }
+}
+@media screen and (min-height: 1000px) {
+  body {
+    min-height: 1000px;
+  }
+}
+@media screen and (min-height: 1100px) {
+  body {
+    min-height: 1100px;
+  }
+}
+
+@media screen and (min-height: 1100px) {
+  body {
+    min-height: 1200px;
+  }
+} */
