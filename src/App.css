@@ -844,8 +844,8 @@ nav {
 .logout-buttons {
   display: flex;
   flex-direction: row;
-  justify-content: space-evenly;
-  gap: 10px;
+  justify-content: center;
+  gap: 30px;
   width: 80%;
   margin-left: auto;
   margin-right: auto;
@@ -1097,6 +1097,10 @@ nav {
 @media screen and (min-width: 900px) {
   body {
     background-size: 160% 220%;
+  }
+
+  .right-nav-container {
+    margin-right: 20px;
   }
 
   .main-step-container {
