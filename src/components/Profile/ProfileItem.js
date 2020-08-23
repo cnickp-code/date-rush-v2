@@ -31,7 +31,11 @@ const ProfileItem = (props) => {
         handleSetSummaryBool(true);
         handleSetSummaryDate(date);
         handleSetOnlyLocation(date.location);
-        initMap(props.date.place_id);
+
+        if(props.date.place_id !== 'placeholder') {
+            initMap(props.date.place_id);
+        }
+        
         handleSetDrinkTypeOnly(date.drink_type);
         console.log('>>>>>>>>>>>>>>>>>>>>>>>>>>>>')
         console.log('DATE DRINK TYPE: ', date.drink_type);
@@ -54,10 +58,10 @@ const ProfileItem = (props) => {
                     handleSetSummaryRestaurant(restaurant)
                 })
 
-            if(props.date.drink_type === 'Alc') {
+            if(props.date.drink_type === 'Alc' && date.drink_id !== 'placeholder') {
                 initMapDrink(props.date.drink_id);
                 handleSetDrinkTypeOnly('Alc');
-            } else if(props.date.drink_type === 'NA') {
+            } else if(props.date.drink_type === 'NA' && date.drink_id !== 'placeholder') {
                 initMapDrink(props.date.drink_id);
                 handleSetDrinkTypeOnly('NA');
             }

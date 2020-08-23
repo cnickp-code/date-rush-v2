@@ -49,11 +49,18 @@ const google = window.google = window.google ? window.google : {};
 
 const StepOne = () => {
 
-    const { handleSetLocation, handleSetPlaces, handleSetShowNext } = useContext(DRContext);
+    const { handleSetLocation, handleSetPlaces, handleSetShowNext, handleSetInitialDrink } = useContext(DRContext);
     const [address, setAddress] = useState(null);
     const [locBool, setLocBool] = useState(false);
     const [nextBool, setNextBool] = useState(false);
     const [latLng, setLatLng] = useState({});
+
+    useEffect(() => {
+        ExtApiService.getAlcDrinks()
+        .then(drinks => {
+          handleSetInitialDrink(drinks.drinks[0])
+        })
+    }, [])
 
 
     let tempLoc = center;

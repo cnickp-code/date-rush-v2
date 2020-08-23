@@ -35,7 +35,7 @@ class BalloonButton extends React.Component {
                 } */}
                 {(this.context.step === 5) && <div className="bb-invis" onClick={this.handlePrevStep}>
                 </div>}
-                {!(this.context.step === 5) && <div className="bb-arrow text-center" onClick={this.handlePrevStep}>
+                {!(this.context.step === 5) && !(this.context.step === 1) && <div className="bb-arrow text-center" onClick={this.handlePrevStep}>
                     <i class="fas fa-caret-down"></i>
                 </div>
                 }

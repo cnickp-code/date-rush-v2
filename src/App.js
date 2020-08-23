@@ -28,11 +28,6 @@ class App extends React.Component {
   }
 
   componentDidMount() {
-    ExtApiService.getAlcDrinks()
-      .then(drinks => {
-        this.context.handleSetInitialDrink(drinks.drinks[0])
-      })
-
     ExtApiService.getMovieGenres()
       .then(results => {
         this.context.handleSetMovieGenres(results.genres);
@@ -66,7 +61,8 @@ class App extends React.Component {
     // console.log('DateType', this.context.dateType);
     // console.log('Step: ', this.context.step);
     // console.log('RESTAURANTS', this.context.restaurants);
-    // console.log('ACTIVITY', this.context.activity);
+    console.log('ACTIVITY', this.context.activity);
+    console.log('PLACES', this.context.places);
     // console.log('RESTAURANT', this.context.restaurant);
     // console.log('MEAL', this.context.meal);
     console.log('DRINK', this.context.drink);
