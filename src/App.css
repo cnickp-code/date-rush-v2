@@ -682,6 +682,13 @@ nav {
 }
 
 /* RESULTS STYLES */
+.next-button {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+}
+
 .results-container {
   padding-top: 10%;
 }

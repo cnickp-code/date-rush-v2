@@ -510,8 +510,9 @@ export class DRContextProvider extends React.Component {
             setBars: this.setBars,
             handleSetDrinkPlace: this.handleSetDrinkPlace,
             handleSetDrinkTypeOnly: this.handleSetDrinkTypeOnly,
-            handleSetSummaryDrinkPlace: this.handleSetSummaryDrinkPlace
-            
+            handleSetSummaryDrinkPlace: this.handleSetSummaryDrinkPlace,
+            handleSetRandomActivity: this.handleSetRandomActivity,
+            handleSetRandomRestaurant: this.handleSetRandomRestaurant
         }
 
         return (
