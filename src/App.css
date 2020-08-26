@@ -22,7 +22,7 @@
 html {
   font-family: var(--font-family-p);
   color: var(--font-color-p);
-  background-color: black;
+  /* background-color: black; */
 }
 
 body {
