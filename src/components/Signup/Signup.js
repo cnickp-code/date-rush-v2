@@ -170,8 +170,9 @@ class Signup extends React.Component {
                                         {error && <Error error={error}>{error}</Error>}
 
                                     <h1>Sign up</h1>
+                                    
                                 </div>
-
+                                <p>Demo credentials at login screen</p>
 
                                 <input
                                     placeholder="Enter user name"
