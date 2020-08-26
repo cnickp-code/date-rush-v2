@@ -1211,6 +1211,10 @@ nav {
     0 -0.5rem 2rem #2433ff, 0 0.5rem 3rem #2433ff;
     animation: shine 2s forwards, flicker 3s infinite;
   }
+
+  .preview-image {
+    max-width: 600px;
+  }
 }
 
 @media screen and (min-width: 900px) {
