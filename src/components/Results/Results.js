@@ -12,7 +12,7 @@ class Results extends React.Component {
     constructor(props) {
         super(props);
         this.state = {
-            type: null
+            type: 'Activity'
         }
     }
 
@@ -96,10 +96,17 @@ class Results extends React.Component {
                 </div>
 
                 <div className="results-buttons mt-20">
-                    <button className="item-btn3" onClick={this.setTypeActivity}><i className="fas fa-tree home-step-icon"></i></button>
-                    <button className="item-btn3" onClick={this.setTypeMeal}><i className="fas fa-hamburger home-step-icon"></i></button>
-                    <button className="item-btn3" onClick={this.setTypeDrink}><i className="fas fa-cocktail home-step-icon"></i></button>
-                    <button className="item-btn3" onClick={this.setTypeShow}><i className="fas fa-tv home-step-icon"></i></button>
+                    {!(this.state.type === 'Activity') && <button className="item-btn3" onClick={this.setTypeActivity}><i className="fas fa-tree home-step-icon"></i></button>}
+                    {(this.state.type === 'Activity') && <button className="item-btn3-selected"><i className="fas fa-tree home-step-icon"></i></button>}
+                    
+                    {(this.state.type === 'Meal') && <button className="item-btn3-selected"><i className="fas fa-hamburger home-step-icon"></i></button>}
+                    {!(this.state.type === 'Meal') && <button className="item-btn3" onClick={this.setTypeMeal}><i className="fas fa-hamburger home-step-icon"></i></button>}
+                    
+                    {(this.state.type === 'Drink') && <button className="item-btn3-selected"><i className="fas fa-cocktail home-step-icon"></i></button>}
+                    {!(this.state.type === 'Drink') && <button className="item-btn3" onClick={this.setTypeDrink}><i className="fas fa-cocktail home-step-icon"></i></button>}
+                    
+                    {(this.state.type === 'Show') && <button className="item-btn3-selected"><i className="fas fa-tv home-step-icon"></i></button>}
+                    {!(this.state.type === 'Show') && <button className="item-btn3" onClick={this.setTypeShow}><i className="fas fa-tv home-step-icon"></i></button>}
                 </div>
 
                 {!this.context.summaryBool && this.state.type &&

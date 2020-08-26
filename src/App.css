@@ -22,6 +22,7 @@
 html {
   font-family: var(--font-family-p);
   color: var(--font-color-p);
+  background-color: black;
 }
 
 body {
@@ -342,6 +343,20 @@ nav {
   text-shadow: 0 0 0.6rem #ffe6ff, 0 0 1.5rem #ff65bd,
     -0.2rem 0.1rem 1rem #ff65bd, 0.2rem 0.1rem 1rem #ff65bd,
     0 -0.5rem 2rem #ff2483, 0 0.5rem 3rem #ff2483;
+}
+
+.item-btn3-selected {
+  background-color: #ff65bd;
+  padding: 12px 20px;
+  border: 2px solid #ff65bd;
+  cursor: pointer;
+  border-radius: 10px;
+  font-size: 18px;
+  color: #ffe6ff;
+  text-shadow: 0 0 0.6rem #ffe6ff, 0 0 1.5rem #ff65bd,
+    -0.2rem 0.1rem 1rem #ff65bd, 0.2rem 0.1rem 1rem #ff65bd,
+    0 -0.5rem 2rem #ff2483, 0 0.5rem 3rem #ff2483;
+  outline: none;
 }
 
 .item-btn4-selected {
@@ -1197,6 +1212,12 @@ nav {
   }
 }
 
+@media screen and (min-height: 600px) {
+  body {
+    min-height: 600px;
+  }
+}
+
 @media screen and (min-width: 768px) {
   .bb-arrow {
     font-size: 50px;
@@ -1213,7 +1234,7 @@ nav {
   }
 
   .preview-image {
-    max-width: 600px;
+    max-width: 500px;
   }
 }
 
