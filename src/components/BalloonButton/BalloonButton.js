@@ -20,7 +20,7 @@ class BalloonButton extends React.Component {
 
     render() {
         let currentStep = this.context.step;
-        console.log(currentStep);
+        // console.log(currentStep);
         return (
             <div className="bb-container">
 

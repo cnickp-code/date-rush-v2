@@ -54,7 +54,7 @@ const LocationForm = () => {
 
     let tempLoc = center;
 
-    console.log(latLng);
+    // console.log(latLng);
 
     if(latLng) {
         tempLoc = latLng;
@@ -98,7 +98,7 @@ const LocationForm = () => {
         let placeObj = {};
     
         service.nearbySearch(request, function(results, status, pagetoken) {
-            console.log(results.length);
+            // console.log(results.length);
             for(let i = 0; i < results.length; i++) {
                 // console.log(results[i].name, results[i].types)
                 // console.log(results[i]);
@@ -157,7 +157,7 @@ const LocationForm = () => {
         //         setForward(true);
         //     })
     }
-    console.log(tempLoc)
+    // console.log(tempLoc)
 
     return (
         <div className="form-container">
@@ -176,7 +176,7 @@ const LocationForm = () => {
                                 setLatLng(latLngObj);
                                 setAddress(address);
                             } catch (e) {
-                                console.log('error!')
+                                // console.log('error!')
                             }
                         }}
                     >

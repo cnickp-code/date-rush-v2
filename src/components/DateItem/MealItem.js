@@ -8,7 +8,7 @@ const MealItem = (props) => {
         setShowDetails(!showDetails);
     }
 
-    console.log(props.meal);
+    // console.log(props.meal);
     return (
         <div className="main-container">
             <div className="border">

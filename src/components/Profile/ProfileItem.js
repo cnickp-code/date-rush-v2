@@ -37,9 +37,9 @@ const ProfileItem = (props) => {
         }
         
         handleSetDrinkTypeOnly(date.drink_type);
-        console.log('>>>>>>>>>>>>>>>>>>>>>>>>>>>>')
-        console.log('DATE DRINK TYPE: ', date.drink_type);
-        console.log('DATE DRINK ID: ', date.drink_id);
+        // console.log('>>>>>>>>>>>>>>>>>>>>>>>>>>>>')
+        // console.log('DATE DRINK TYPE: ', date.drink_type);
+        // console.log('DATE DRINK ID: ', date.drink_id);
 
         if (props.date.meal_type === 'In') {
             ExtApiService.getMealById(Number(props.date.meal_id))
@@ -122,7 +122,7 @@ const ProfileItem = (props) => {
         let placeObj = {};
 
         service.getDetails(request, function (results, status, pagetoken) {
-            console.log(results);
+            // console.log(results);
             let latNum = results.geometry.location.lat();
             let lngNum = results.geometry.location.lng();
             let locationObj = { lat: latNum, lng: lngNum };
@@ -162,7 +162,7 @@ const ProfileItem = (props) => {
         let placeObj = {};
 
         service.getDetails(request, function (results, status, pagetoken) {
-            console.log(results);
+            // console.log(results);
             let latNum = results.geometry.location.lat();
             let lngNum = results.geometry.location.lng();
             let locationObj = { lat: latNum, lng: lngNum };
