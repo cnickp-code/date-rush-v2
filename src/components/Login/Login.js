@@ -3,6 +3,7 @@ import { Spring } from 'react-spring/renderprops';
 import TokenService from '../../services/token-service';
 import AuthApiService from '../../services/auth-api-service';
 import DRContext from '../../context/DRContext';
+import Error from '../Utils/Error';
 
 class Login extends React.Component {
     static contextType = DRContext;
@@ -58,9 +59,12 @@ class Login extends React.Component {
                     <div className="form-box-ls center">
                         <form className="main-form" onSubmit={this.handleSubmit}>
                             <div role='alert'>
-                                {error && <p className='error text-right'>{error}</p>}
+                                {error && <Error error={error}>{error}</Error>}
                             </div>
                             <h1>Log In</h1>
+                            <p>Demo credentials:</p>
+                            <p>Username: username</p>
+                            <p>Password: Password123!</p>
 
                             <input
                                 placeholder="Enter user name"

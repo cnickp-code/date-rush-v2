@@ -2,6 +2,7 @@ import React from 'react';
 import { Spring } from 'react-spring/renderprops';
 import AuthApiService from '../../services/auth-api-service';
 import DRContext from '../../context/DRContext';
+import Error from '../Utils/Error';
 
 class Signup extends React.Component {
     static contextType = DRContext;
@@ -166,7 +167,7 @@ class Signup extends React.Component {
 
                                 <div className="form-header-container">
                                     
-                                        {error && <p className='alert error'>{error}</p>}
+                                        {error && <Error error={error}>{error}</Error>}
 
                                     <h1>Sign up</h1>
                                 </div>
