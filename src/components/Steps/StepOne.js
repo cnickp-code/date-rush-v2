@@ -57,9 +57,9 @@ const StepOne = () => {
 
     useEffect(() => {
         ExtApiService.getAlcDrinks()
-        .then(drinks => {
-          handleSetInitialDrink(drinks.drinks[0])
-        })
+            .then(drinks => {
+                handleSetInitialDrink(drinks.drinks[0])
+            })
     }, [])
 
 
@@ -170,19 +170,7 @@ const StepOne = () => {
                         <h5 >Set a location</h5>
                         <p className="mb-10 fs-xs"><i>Enter an address or click the compass to use your current location. Must set location to continue.</i></p>
                     </div>
-                    <div className="compass" onClick={() => {
-                        navigator.geolocation.getCurrentPosition((position) => {
-                            let locationObj = { lat: position.coords.latitude, lng: position.coords.longitude };
-                            let latLngStr = `${position.coords.latitude},${position.coords.longitude}`
-                            setLatLng(locationObj);
-                            ExtApiService.getLocationName(latLngStr)
-                                .then(result => {
-                                    setLocBool(true)
-                                    setAddress(result.results[1].formatted_address);
-                                })
-                        }
-                            , () => null)
-                    }}></div>
+
                 </div>
 
                 <form id="home-form" onSubmit={handleSubmit}>
@@ -210,8 +198,8 @@ const StepOne = () => {
                                 value={value}
                                 onChange={(e) => {
                                     setValue(e.target.value)
-                                    
-                                    
+
+
                                 }}
                                 disabled={!ready}
                                 placeholder='Enter a city'
@@ -234,16 +222,29 @@ const StepOne = () => {
                             center={tempLoc}
                             options={options}
                         >
+                            <div className="compass" onClick={() => {
+                                navigator.geolocation.getCurrentPosition((position) => {
+                                    let locationObj = { lat: position.coords.latitude, lng: position.coords.longitude };
+                                    let latLngStr = `${position.coords.latitude},${position.coords.longitude}`
+                                    setLatLng(locationObj);
+                                    ExtApiService.getLocationName(latLngStr)
+                                        .then(result => {
+                                            setLocBool(true)
+                                            setAddress(result.results[1].formatted_address);
+                                        })
+                                }
+                                    , () => null)
+                            }}></div>
                             <Marker position={tempLoc} />
 
                         </GoogleMap>
                     </div>
 
-                    {locBool && 
-                    <>
-                        <p className="fs-xs text-center mt-10"><i>Using Current Location</i></p>
-                        <p className="fs-xs text-center"><i>{address}</i></p>
-                    </>}
+                    {locBool &&
+                        <>
+                            <p className="fs-xs text-center mt-10"><i>Using Current Location</i></p>
+                            <p className="fs-xs text-center"><i>{address}</i></p>
+                        </>}
 
                     <div className="flex-center">
                         <button disabled={!locBool} type="submit" className="item-btn mt-10 pad-5 center">Set Location</button>

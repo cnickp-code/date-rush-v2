@@ -54,24 +54,24 @@ class App extends React.Component {
       document.body.classList.add('body-pos-home');
     }
 
-    console.log('-------------------------------');
-    console.log(this.context.login);
+    // console.log('-------------------------------');
+    // console.log(this.context.login);
     // console.log('LATLNG', this.context.latLng);
     // console.log('Location', this.context.location);
     // console.log('DateType', this.context.dateType);
     // console.log('Step: ', this.context.step);
     // console.log('RESTAURANTS', this.context.restaurants);
-    console.log('ACTIVITY', this.context.activity);
-    console.log('PLACES', this.context.places);
+    // console.log('ACTIVITY', this.context.activity);
+    // console.log('PLACES', this.context.places);
     // console.log('RESTAURANT', this.context.restaurant);
     // console.log('MEAL', this.context.meal);
-    console.log('DRINK', this.context.drink);
-    console.log('DRINK TYPE', this.context.drinkType);
-    console.log('MEAL TYPE', this.context.mealType)
-    console.log('CAFES', this.context.cafes)
-    console.log('CAFE', this.context.cafe)
-    console.log('BARS', this.context.bars)
-    console.log('BAR', this.context.bar)
+    // console.log('DRINK', this.context.drink);
+    // console.log('DRINK TYPE', this.context.drinkType);
+    // console.log('MEAL TYPE', this.context.mealType)
+    // console.log('CAFES', this.context.cafes)
+    // console.log('CAFE', this.context.cafe)
+    // console.log('BARS', this.context.bars)
+    // console.log('BAR', this.context.bar)
     // console.log('SHOW', this.context.show)
     // console.log('GENRES', this.context.movieGenres);
 

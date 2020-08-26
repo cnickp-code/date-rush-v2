@@ -46,6 +46,7 @@ class Results extends React.Component {
     handleGoBack = () => {
         this.context.handleSetStep(6);
         this.context.handleSetSummaryBool(false);
+        this.context.handleReset();
     }
 
     render() {
@@ -55,8 +56,6 @@ class Results extends React.Component {
             header = <h1 className="results-header text-center mb-10">{this.context.summaryDate.name}</h1>
         }
 
-        console.log(this.context.bar);
-        console.log((this.context.bar === undefined) && (this.state.type === 'Drink') && (this.context.mealType === 'Out') && (this.context.drinkType === 'Alc'))
         return (
             <div className="results-container">
                 {header}
@@ -82,23 +81,74 @@ class Results extends React.Component {
                     <button className="item-btn3" onClick={this.setTypeDrink}><i className="fas fa-cocktail home-step-icon"></i></button>
                     <button className="item-btn3" onClick={this.setTypeShow}><i className="fas fa-tv home-step-icon"></i></button>
                 </div>
-                {(this.context.restaurant === undefined || this.context.restaurant === null) && (this.state.type === 'Meal') && (this.context.mealType === 'Out') && <NotFoundItem />}
-                {(this.context.activity === undefined || this.context.activity === null) && (this.state.type === 'Activity')  && <NotFoundItem />}
-                {(this.context.cafe === undefined || this.context.cafe === null) && (this.state.type === 'Drink') && (this.context.mealType === 'Out') && (this.context.drinkType === 'NA') && <NotFoundItem />}
-                {(this.context.bar === undefined || this.context.bar === null) && (this.state.type === 'Drink') && (this.context.mealType === 'Out') && (this.context.drinkType === 'Alc') && <NotFoundItem />}
 
-                {!(this.context.cafe === undefined) && !this.context.summaryBool && (this.state.type === 'Drink') && (this.context.mealType === 'Out') && (this.context.drinkType === 'NA') && <ActivityItem activity={this.context.cafe} />}
-
-                {!(this.context.bar === undefined) && !this.context.summaryBool && (this.state.type === 'Drink') && (this.context.mealType === 'Out') && (this.context.drinkType === 'Alc') && <ActivityItem activity={this.context.bar} />}
-
-                {!(this.context.activity === undefined || this.context.activity === null) && (this.state.type === 'Activity') && <ActivityItem activity={this.context.activity} />}
-                {!(this.context.restaurant === undefined || this.context.restaurant === null) && (this.state.type === 'Meal') && (this.context.mealType === 'Out') && <RestaurantItem restaurant={this.context.restaurant} />}
+                {(this.context.restaurant === undefined || this.context.restaurant === null) && 
+                (this.state.type === 'Meal') && 
+                (this.context.mealType === 'Out') && 
+                <NotFoundItem />}
                 
-                {(this.state.type === 'Meal') && (this.context.mealType === 'In') && <MealItem meal={this.context.meal} />}
-                {(this.state.type === 'Drink') && (this.context.mealType === 'In') && <Drinkitem drink={this.context.drink} />}
-                {!(this.context.cafe === undefined || this.context.cafe === null) && this.context.summaryBool && (this.state.type === 'Drink') && (this.context.mealType === 'Out') && (this.context.drinkType === 'NA') && <ActivityItem activity={this.context.drink} />}
-                {!(this.context.bar === undefined || this.context.bar === null) && this.context.summaryBool && (this.state.type === 'Drink') && (this.context.mealType === 'Out') && (this.context.drinkType === 'Alc') && <ActivityItem activity={this.context.drink} />}
-                {(this.state.type === 'Show') && <ShowItem movieBool={this.context.movieBool} show={this.context.show} />}
+                {(this.context.activity === undefined || this.context.activity === null) && 
+                (this.state.type === 'Activity')  && 
+                <NotFoundItem />}
+                
+                {(this.context.cafe === undefined || this.context.cafe === null) && 
+                (this.state.type === 'Drink') && 
+                (this.context.mealType === 'Out') && 
+                (this.context.drinkType === 'NA') && 
+                <NotFoundItem />}
+
+                {(this.context.bar === undefined || this.context.bar === null) && 
+                (this.state.type === 'Drink') && 
+                (this.context.mealType === 'Out') && 
+                (this.context.drinkType === 'Alc') && 
+                <NotFoundItem />}
+
+                {!(this.context.cafe === undefined) && 
+                !this.context.summaryBool && 
+                (this.state.type === 'Drink') && 
+                (this.context.mealType === 'Out') && 
+                (this.context.drinkType === 'NA') && 
+                <ActivityItem activity={this.context.cafe} />}
+
+                {!(this.context.bar === undefined) && 
+                !this.context.summaryBool && 
+                (this.state.type === 'Drink') && 
+                (this.context.mealType === 'Out') && 
+                (this.context.drinkType === 'Alc') && 
+                <ActivityItem activity={this.context.bar} />}
+
+                {!(this.context.activity === undefined || this.context.activity === null) && 
+                (this.state.type === 'Activity') && 
+                <ActivityItem activity={this.context.activity} />}
+
+                {!(this.context.restaurant === undefined || this.context.restaurant === null) && 
+                (this.state.type === 'Meal') && 
+                (this.context.mealType === 'Out') && 
+                <RestaurantItem restaurant={this.context.restaurant} />}
+                
+                {(this.state.type === 'Meal') && 
+                (this.context.mealType === 'In') && 
+                <MealItem meal={this.context.meal} />}
+
+                {(this.state.type === 'Drink') && 
+                (this.context.mealType === 'In') && 
+                <Drinkitem drink={this.context.drink} />}
+
+                {!(this.context.cafe === undefined || this.context.cafe === null) && 
+                this.context.summaryBool && 
+                (this.state.type === 'Drink') && 
+                (this.context.mealType === 'Out') && 
+                (this.context.drinkType === 'NA') && 
+                <ActivityItem activity={this.context.drink} />}
+
+                {!(this.context.bar === undefined || this.context.bar === null) && 
+                this.context.summaryBool && (this.state.type === 'Drink') && 
+                (this.context.mealType === 'Out') && 
+                (this.context.drinkType === 'Alc') && 
+                <ActivityItem activity={this.context.drink} />}
+
+                {(this.state.type === 'Show') && 
+                <ShowItem movieBool={this.context.movieBool} show={this.context.show} />}
             </div>
         )
     }

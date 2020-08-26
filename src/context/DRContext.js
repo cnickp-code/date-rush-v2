@@ -110,6 +110,8 @@ export class DRContextProvider extends React.Component {
             meal: null,
             restaurant: null,
             drink: null,
+            bar: null,
+            cafe: null
         })
     }
 
@@ -440,9 +442,18 @@ export class DRContextProvider extends React.Component {
     }
 
     handleSetSummaryDrinkPlace = (place) => {
-        this.setState({
-            drink: place
-        })
+        if(this.state.drinkType === 'Alc') {
+            this.setState({
+                drink: place,
+                bar: place,
+            })
+        } else if(this.state.drinkType === 'NA') {
+            this.setState({
+                drink: place,
+                cafe: place,
+            })
+        }
+
     }
 
     handleSetRandomActivity = () => {
