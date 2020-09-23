@@ -23,4 +23,4 @@ React, NodeJS, PostgreSQL, Google Maps/Places/Geocoding API, CocktailDB, MovieDB
 
 ## Version
 
-Build 0.000000001
+Build 0.0.3

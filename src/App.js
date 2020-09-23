@@ -40,7 +40,6 @@ class App extends React.Component {
 
     DateRushApiService.getDates()
       .then(results => {
-        console.log('my dates ', results)
         this.context.handleSetMyDates(results);
       })
   }
