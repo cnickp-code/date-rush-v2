@@ -12,7 +12,6 @@ export default {
 
     MEAL_API_KEY: '1',
     DRINK_API_KEY: '1',
-    // GOOGLE_API_KEY: 'AIzaSyAmch3c6UXtGR_f6-iB1NYDSf8CESBoge0',
     GOOGLE_API_KEY: 'AIzaSyCkNGTUSoX9SD-4se6916R3zfjHT5ywBJw',
     POS_STACK_API_KEY: '304ca5ccf1efaa98edc4472a6aad1015',
     RESTAURANT_API_KEY: '4da470aab3c605b25b7c16a75d16929e',

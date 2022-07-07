@@ -69,6 +69,8 @@ const StepOne = () => {
         tempLoc = latLng;
     }
 
+    console.log('config: ', config.GOOGLE_API_KEY);
+
     const { isLoaded, loadError } = useLoadScript({
         googleMapsApiKey: config.GOOGLE_API_KEY,
         libraries
